@@ -26,11 +26,13 @@
 	<beans:bean class="com.fn.file.Download" id="download" />
 	
 	<context:component-scan base-package="com.fn.meeting" />
-<<<<<<< HEAD
+
 	<context:component-scan base-package="com.fn.weather"/>
-=======
-	<context:component-scan base-package="com.fn.board" />
 	
+	<context:component-scan base-package="com.fn.member"/>
 	
->>>>>>> pjw
+	<context:component-scan base-package="com.fn.message"/>
+	
+	<context:component-scan base-package="com.fn.board"/>
+
 </beans:beans>

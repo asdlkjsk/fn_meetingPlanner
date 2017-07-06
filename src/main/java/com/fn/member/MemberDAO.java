@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fn.util.ListInfo;
 
+
 public interface MemberDAO {
 	
 	//login

@@ -7,11 +7,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fn.util.SeDTO;
+
 
 @Service
 public class FileService {
 	
-	/*//SeUpload
+	//SeUpload
 	public String seUpload(SeDTO seDTO, HttpSession session)throws Exception{
 		//
 		String file_result="";
@@ -40,6 +42,6 @@ public class FileService {
 		FileSaver fileSaver = new FileSaver();
 		String fileName=fileSaver.filesave(session.getServletContext().getRealPath("resources/upload"), m);
 		return fileName;
-	}*/
+	}
 
 }

@@ -2,10 +2,13 @@ package com.fn.member.manager;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.fn.member.MemberDTO;
 import com.fn.member.MemberService;
 import com.fn.util.ListInfo;
 
+@Service
 public class ManagerServiceImpl implements MemberService{
 
 	@Override
