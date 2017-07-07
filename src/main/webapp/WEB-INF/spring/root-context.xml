@@ -14,7 +14,6 @@
 		</property>
 	</bean>
 		
-	
 	<!-- datasource -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property name="username" value="${jdbc.user}" />

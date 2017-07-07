@@ -5,7 +5,9 @@
 	<title>Home</title>
 </head>
 <body>
+<a href="weatherList">Weather</a>
 <h1>
+	Hello world!  
 	Hello world!  
 </h1>
 
