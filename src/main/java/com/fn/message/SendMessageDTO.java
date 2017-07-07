@@ -2,7 +2,7 @@ package com.fn.message;
 
 import java.sql.Date;
 
-public class SendMessage {
+public class SendMessageDTO {
 	private int megNum;
 	private String sendId;
 	private String contents;
