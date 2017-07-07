@@ -25,13 +25,9 @@
 	
 	<beans:bean class="com.fn.file.Download" id="download" />
 	
-<<<<<<< HEAD
+
 	<context:component-scan base-package="com.fn.meeting" />
 	<context:component-scan base-package="com.fn.board" />
-	
-	
-=======
 	<context:component-scan base-package="com.fn.**" />
 
->>>>>>> 6ae0b0cce6236be86f45a971b63ef2e02bd4a413
 </beans:beans>
