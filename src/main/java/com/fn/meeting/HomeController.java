@@ -35,5 +35,10 @@ public class HomeController {
 		
 		return "home";
 	}
+	@RequestMapping(value="cal/callback")
+	public String callback(){
+		
+		return "cal/callback";
+	}
 	
 }
