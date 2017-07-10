@@ -25,7 +25,7 @@
   	
   }
   .main_section{
-  	width:1000px;
+  	width:1150px;
   	height:810px;
   	background-color: yellow;
   	margin: 0 auto;
@@ -37,13 +37,13 @@
   	margin: 0 auto;
   }
   .header_wrap{
-  width:1000px;
+  width:1150px;
   height:70px;
  
   margin: 0 auto;
   }
   .footer_wrap{
-  width:1000px;
+  width:1150px;
   height:70px;
   margin : 0 auto;
   }
