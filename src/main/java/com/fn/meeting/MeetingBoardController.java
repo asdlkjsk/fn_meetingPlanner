@@ -56,6 +56,7 @@ public class MeetingBoardController {
 		
 	}
 	
+	//delete
 	@RequestMapping(value="meetingDelete", method=RequestMethod.GET)
 	public void meetingDelete(Integer num, RedirectAttributes redirectAttributes) throws Exception {
 		

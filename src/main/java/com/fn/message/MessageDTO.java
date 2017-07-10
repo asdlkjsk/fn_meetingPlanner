@@ -1,6 +1,6 @@
 package com.fn.message;
 
-public class MessageDTO extends SendMessage {
+public class MessageDTO extends SendMessageDTO {
 	
 	private int mcheck;	
 	
