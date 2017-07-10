@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/css/reset.css">
 <html>
 <head>
 	<title>Home</title>
