@@ -4,7 +4,7 @@
 <footer>
 		<div class="footer_wrap">
 			<div class="img_div">
-				<img src="resources/images/logo1.png" class="logo">
+				<img src="<%=application.getContextPath() %>/resources/images/logo1.png" class="logo">
 			</div>
 		</div>
 	</footer>

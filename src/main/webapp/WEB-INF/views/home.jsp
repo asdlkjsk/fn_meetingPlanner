@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<c:import url="/resources/temp/bootStrap.jsp"></c:import>
+<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
 <style type="text/css">
 .main_section {
 	width: 1150px;
@@ -21,10 +21,10 @@
 </head>
 
 <body>
-<c:import url="/resources/temp/header.jsp" /> 
+<c:import url="/WEB-INF/views/temp/header.jsp" /> 
 	<section class="main_section">
 	
 	</section>
-<c:import url="/resources/temp/footer.jsp" />
+<c:import url="/WEB-INF/views/temp/footer.jsp" />
 </body>
 </html>
