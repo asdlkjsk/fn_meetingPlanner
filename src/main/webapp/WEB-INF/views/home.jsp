@@ -157,64 +157,117 @@ h2 {
 .list {
 	position: relative;
 	width: 317px;
-	height: 200px;
+	height: 192px;
 	border: 1px solid black;
 	display: inline-block;
 	margin: 30px;
 	float: left;
+	overflow: hidden;
 }
+
 .image {
 	display: block;
 	width: 100%;
 	height: auto;
 }
 
-.overlay {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 100%;
-	width: 100%;
-	opacity: 0;
-	transition: .5s ease;
-	background-color: #008CBA;
-	opacity: 0.5;
-	display: inline-block;
-}
-
 .text {
-	color: white;
+/* 	color: white; */
 	font-size: 20px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+	font-weight: bold;
 }
 
-.list_2 {
-	display: none;
+
+/* slideSHOW */
+* {
+	box-sizing: border-box
 }
-.w3-content{
-	height: 100%;
-	width: 100%;
+
+body {
+	font-family: Verdana, sans-serif;
 }
-.w3-display-container{
-	height: 100%;
-	width: 100%;
+
+.mySlides {
+	display: none
 }
+
+/* Slideshow container */
+.slideshow-container {
+	max-width: 1150px;
+	height: 540px;
+	position: relative;
+	margin: auto;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+	height: 13px;
+	width: 13px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@
+-webkit-keyframes fade {
+	from {opacity: .4
+}
+
+to {
+	opacity: 1
+}
+
+}
+@
+keyframes fade {
+	from {opacity: .4
+}
+
+to {
+	opacity: 1
+}
+
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+	.text {
+		font-size: 20px
+	}
+}
+
 
 </style>
-<script type="text/javascript">
-	$(function() {
-		$('.bxslider').bxSlider({
-			  auto: true,
-			  autoControls: true
-			});
-	});
-</script>
+
 
 
 <title>네이버 로그인</title>
@@ -253,51 +306,79 @@ h2 {
 		</div>
 		
 		<!-- 카테고리 list -->
-		<div class="main_kind">
-			<div class="main_kind_div">
-			
-			<ul class="bxslider">
-				<li>
-				<div class="list" >
-					<a href="#"><img src="resources/images/sports.jpg" style="width:100%; height:100%; overflow: hidden; z-index: 0;"></a>
-					<div class="overlat"><span class="text">스포츠/레저</span></div>
-					</div>
-				</li>
-				<li>
-				<div class="list" >
-					<a href="#"><img src="resources/images/sports.jpg" style="width:100%; height:100%; overflow: hidden; z-index: 0;"></a>
-					<div class="overlat"><span class="text">스포츠/레저</span></div>
-					</div>					
-				</li>
-				<li>
-				<div class="list" >
-					<a href="#"><img src="resources/images/sports.jpg" style="width:100%; height:100%; overflow: hidden; z-index: 0;"></a>
-					<div class="overlat"><span class="text">스포츠/레저</span></div>
-					</div>					
-				</li>
-								<li>
-				<div class="list" >
-					<a href="#"><img src="resources/images/sports.jpg" style="width:100%; height:100%; overflow: hidden; z-index: 0;"></a>
-					<div class="overlat"><span class="text">스포츠/레저</span></div>
-					</div>					
-				</li>
-								<li>
-				<div class="list" >
-					<a href="#"><img src="resources/images/sports.jpg" style="width:100%; height:100%; overflow: hidden; z-index: 0;"></a>
-					<div class="overlat"><span class="text">스포츠/레저</span></div>
-					</div>					
-				</li>
-								<li>
-				<div class="list" >
-					<a href="#"><img src="resources/images/sports.jpg" style="width:100%; height:100%; overflow: hidden; z-index: 0;"></a>
-					<div class="overlat"><span class="text">스포츠/레저</span></div>
-					</div>					
-				</li>
-			
-			</ul>
-
-				</div>
+		<div class="slideshow-container">
+		<div class="mySlides fade">
+		<div class="list">
+			<a href="SlideShow"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text" style="color:black;">스포츠/레저</div>
 		</div>
+		<div class="list">
+			<a href="/meeting"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+		<div class="list">
+			<a href="SlideShow"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+		<div class="list">
+			<a href="SlideShow"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+				<div class="list">
+			<a href="SlideShow"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+				<div class="list">
+			<a href="SlideShow"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+		</div>
+		<div class="mySlides fade">
+		<div class="list">
+			<a href="SlideShow"><img src="resources/images/30.png"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+		<div class="list">
+			<a href="/meeting"><img src="resources/images/logo1.png"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+		<div class="list">
+			<a href="SlideShow"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+		<div class="list">
+			<a href="SlideShow"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+				<div class="list">
+			<a href="SlideShow"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+				<div class="list">
+			<a href="SlideShow"><img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;"></a>
+			<div class="text">Caption Text</div>
+		</div>
+		</div>
+
+
+</div>
+<div id="dot" style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+		
 
 		<!-- Search -->
 		<div class="main_search">
@@ -319,6 +400,26 @@ h2 {
 	</footer>
 
 
+<script type="text/javascript">
+var slideIndex = 0;
+showSlides();
 
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
 </body>
 </html>
