@@ -158,7 +158,7 @@ h2 {
 	position: relative;
 	width: 317px;
 	height: 192px;
-	border: 1px solid black;
+	border: 1px solid white;
 	display: inline-block;
 	margin: 30px;
 	float: left;
@@ -171,8 +171,20 @@ h2 {
 	height: auto;
 }
 
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  height:100%;
+  transition: .5s ease;
+  background-color: rgba(0,0,0,0.5);
+}
+
 .text {
-/* 	color: white; */
+ 	color: white;
 	font-size: 20px;
 	position: absolute;
 	top: 50%;
@@ -309,66 +321,68 @@ to {
 		<div class="slideshow-container">
 		<div class="mySlides fade">
 		<div class="list">
-			<a href="SlideShow"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="text" style="color:black;">스포츠/레저</div>
+			<img src="resources/images/sports.jpg"
+				style="width: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="SlideShow">스포츠/레저</a></div>
+		</div>
 		</div>
 		<div class="list">
 			<a href="/meeting"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 				<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 				<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 		</div>
 		<div class="mySlides fade">
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/30.png"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 		<div class="list">
 			<a href="/meeting"><img src="resources/images/logo1.png"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 				<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 				<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="text">Caption Text</div>
+			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
 		</div>
 		</div>
 
