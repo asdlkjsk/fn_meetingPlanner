@@ -277,6 +277,11 @@ to {
 	}
 }
 
+.move{
+	width: 100%;
+	height: 100%;
+	color:white;
+}
 
 </style>
 
@@ -324,65 +329,65 @@ to {
 			<img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;">
 			<div class="overlay"> 	
-			<div class="text"><a href="SlideShow">스포츠/레저</a></div>
+			<div class="text"><a href="SlideShow" class="move">스포츠/레저</a></div>
 		</div>
 		</div>
 		<div class="list">
 			<a href="/meeting"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">일상 / 이야기</div></div>
 		</div>
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">취업 / 자기계발</div>	</div>
 		</div>
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">게임</div>	</div>
 		</div>
 				<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">음악</div>	</div>
 		</div>
 				<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">여행</div>	</div>
 		</div>
 		</div>
 		<div class="mySlides fade">
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/30.png"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">건강 / 다이어트</div>	</div>
 		</div>
 		<div class="list">
 			<a href="/meeting"><img src="resources/images/logo1.png"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">IT / 기술</div>	</div>
 		</div>
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">문화 / 예술</div>	</div>
 		</div>
 		<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">교육 / 공부</div>	</div>
 		</div>
 				<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">팬클럽</div>	</div>
 		</div>
 				<div class="list">
 			<a href="SlideShow"><img src="resources/images/sports.jpg"
 				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">스포츠/레저</div>	</div>
+			<div class="overlay"><div class="text">나이 / 또래모임</div>	</div>
 		</div>
 		</div>
 
