@@ -8,13 +8,15 @@
 <title>Insert title here</title>
 <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 <c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
-<link rel="stylesheet" type="text/css" href="resources/css/fullcalendar.css">
+<link rel="stylesheet" type="text/css" href="resources/css/fullcalendar.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/fullcalendar.print.css" media="print">
-<link rel="stylesheet" type="text/css" href="resources/css/sweetalert.css">
+<link rel="stylesheet" type="text/css" href="resources/css/sweetalert.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/select-theme-default.css"/>
 <script type="text/javascript" src="resources/js/moment.min.js"></script>
 <script type="text/javascript" src="resources/js/fullcalendar.js"></script>
 <script type="text/javascript" src="resources/js/ko.js"></script>
 <script type="text/javascript" src="resources/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="resources/js/select.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
         $("#calendar").fullCalendar({
@@ -141,7 +143,7 @@
 	      	    var pos = $(this).offset();
       			$('#timebox').css('top', (pos.top + 28) + 'px');    // 레이어 위치 지정
       			$('#timebox').css('left', (pos.left + 28) + 'px');
-      			$('#timebox').fadeIn(350);
+      			$('#timebox').fadeIn();
       			$('#timebox').focus();
       	    },
 	      	viewRender: function (view, element) {
@@ -292,7 +294,11 @@
 		</div>
 	</div>
 	<div id="timebox">
-		
+		<select class="demo">
+			<option value="">Select a country...</option>
+			<option value="United States">United States</option>
+			<option value="United Kingdom">United Kingdom</option>
+		</select>
 	</div>
 	<button id="test">날짜선택완료</button>
 </body>
@@ -322,9 +328,24 @@
     }, function(){
     	mouse_is_inside=false;
     });
+    
+    $('#timebox').hover(function(){
+    	mouse_is_inside=true;
+    }, function(){
+    	mouse_is_inside=false;
+    });
 
     $(document).mouseup(function(){ 
         if(!mouse_is_inside) $('#timebox').hide();
     });
+    
+    $('select.demo').each(function(){
+    	new Select({
+	    	el: this,
+	    	className: 'select-theme-dark', // or select-theme-chosen
+	    	useNative: false, // By default, select fallsback to opening the native browser select on touch devices which are less than or equal to 640px in either height or width.
+	    	alignToHighlighted: 'never' // Select has an option called alignToHighlighted which allows you to change whether the drop is positioned like a real select element (with the currently selected option over the element) or like a canonical dropdown menu.
+    	});
+   	});
 </script>
 </html>
