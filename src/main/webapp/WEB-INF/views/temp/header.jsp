@@ -15,7 +15,7 @@
 			<div id="login_box">
 				<c:if test="${member eq null }">
 					<a href="<%=application.getContextPath() %>/member/memberLogin">로그인</a>
-					<a href="<%=application.getContextPath() %>/message/megList">쪽지</a>
+					<a href="<%=application.getContextPath() %>/message/megList?curPage=1&find=&search=sendId&recvId=asd">쪽지</a>
 				</c:if>
 				<c:if test="${member ne null }">
 					<a href="<%=application.getContextPath() %>/member/memberLogout">로그아웃</a>

@@ -46,13 +46,11 @@ li{
 	text-align: center;
 	border: 1px solid black;
 	font-size: 20px;
-	
+}
+.table{
+	height: 85%;
 }
 
-table {
-	width: 100%;
-	height: 90%;
-}
 
 
 </style>
@@ -79,8 +77,7 @@ table {
 				<div>
 					<form action="${board}List" name="frm">
 						<input type="hidden" name="curPage"> <select name="search">
-							<option value="title">title</option>
-							<option value="writer">writer</option>
+							<option value="sendId">sendId</option>
 							<option value="contents">contents</option>
 						</select> <input type="text" name="find"> <input type="submit"
 							value="검색">
@@ -89,24 +86,20 @@ table {
 				<table class="table">
 					<thead>
 						<tr>
-							<td>보낸사람</td>
-							<td>내용</td>
-							<td>날짜</td>
+							<td style="width: 18%;">보낸사람</td>
+							<td style="width: 60%;">내용</td>
+							<td style="width: 18%;">날짜</td>
 						</tr>
 					</thead>
-
-					<tr>
-						<td>보</td>
-						<td>내</td>
-						<td>날</td>
-					</tr>
-					<c:forEach items="${message}" var="m">
+					<tbody>
+					<c:forEach items="${list}" var="m">
 						<tr>
-							<td>{m.id}</td>
-							<td>{m.contents}</td>
-							<td>{m.reg_date}</td>
+							<td>${m.sendId}</td>
+							<td>${m.contents}</td>
+							<td>${m.sendDate}</td>
 						</tr>
 					</c:forEach>
+					</tbody>
 				</table>
 
 				<c:if test="${listInfo.curBlock > 1}">
@@ -121,8 +114,6 @@ table {
 				</c:if>
 			</div>
 		</div>
-
-
 	</section>
 
 <c:import url="/WEB-INF/views/temp/footer.jsp"></c:import>

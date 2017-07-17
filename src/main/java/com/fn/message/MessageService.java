@@ -11,11 +11,14 @@ import com.fn.util.ListInfo;
 public class MessageService {
 	
 	@Autowired
-	private MessageDAO MessageDAO;
+	private MessageDAO messageDAO;
 	
 	//list
 	public List<MessageDTO> megList(ListInfo listInfo) throws Exception {
-		return null;
+		int count = messageDAO.megCount(listInfo);
+		listInfo.makePage(count);
+		listInfo.makeRow();
+		return messageDAO.megList(listInfo);
 	}
 	
 	//view
