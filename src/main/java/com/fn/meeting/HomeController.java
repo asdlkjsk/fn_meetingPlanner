@@ -41,4 +41,9 @@ public class HomeController {
 		return "cal/callback";
 	}
 	
+	@RequestMapping(value="SlideShow", method = RequestMethod.GET)
+	public String SlideShow(){
+		
+		return "SlideShow";
+	}
 }
