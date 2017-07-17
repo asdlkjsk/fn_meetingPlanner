@@ -12,7 +12,7 @@ import com.fn.message.MessageService;
 import com.fn.util.ListInfo;
 
 @Controller
-//@RequestMapping(value="/message/**")
+@RequestMapping(value="/message/**")
 public class MessageController {
 
 	@Autowired
@@ -20,7 +20,7 @@ public class MessageController {
 	
 	
 	//list
-	//@RequestMapping(value="megList", method=RequestMethod.GET)
+	@RequestMapping(value="megList", method=RequestMethod.GET)
 	public void megList(ListInfo listInfo, Model model) throws Exception {
 		
 	}

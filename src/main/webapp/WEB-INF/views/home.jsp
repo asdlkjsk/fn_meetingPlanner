@@ -1,72 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript"	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" type="text/css" href="<c:url value='resources/css/reset.css'/>">
+<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
 <meta charset="utf-8">
 <style type="text/css">
 body {
 	height: 100%;
 	overflow: hidden;
-	/* background-color: white; */
-}
-
-header {
-	width: 100%;
-	height: 70px;
-	display: inline-block;
-	margin: 0 auto;
 }
 
 .main_section {
 	width: 1150px;
 	height: 810px;
-	/* background-color: yellow; */
 	margin: 0 auto;
-}
-
-.footer {
-	width: 100%;
-	height: 70px;
-	background-color: gray;
-	margin: 0 auto;
-}
-
-.header_wrap {
-	width: 1150px;
-	height: 70px;
-	margin: 0 auto;
-}
-
-.footer_wrap {
-	width: 1150px;
-	height: 70px;
-	margin: 0 auto;
-}
-
-.img_div {
-	width: 50px;
-	height: 50px;
-	margin: auto 0;
-	padding-top: 10px;
-	display: inline-block;
-}
-
-.logo {
-	width: 50px;
-	height: 50px;
-}
-
-.header_name {
-	width: 300px;
-	display: inline-block;
 }
 
 /* main 시작!! */
@@ -85,7 +35,6 @@ header {
 .main_kind {
 	width: 100%;
 	height: 560px;
-	/* background-color: fuchsia; */
 }
 
 .main_text_div {
@@ -103,13 +52,13 @@ header {
 	display: inline-block;
 	text-align: center;
 	margin-top: 55px;
-	float: left;
+	float: right;
 }
 
 #search {
 	width: 62%;
 	height: 36%;
-	float: left;
+	float: right;
 }
 
 #btn_search {
@@ -121,7 +70,7 @@ header {
 	color: #fff;
 	background-color: #44aaff;
 	border: none;
-	float: left;
+	float: right;
 }
 
 #crate_btn {
@@ -152,6 +101,7 @@ header {
 h2 {
 	font-size: 23px;
 	font-family: "나눔고딕";
+	margin: 0;
 }
 
 .list {
@@ -160,9 +110,13 @@ h2 {
 	height: 192px;
 	border: 1px solid white;
 	display: inline-block;
-	margin: 30px;
+	margin-bottom : 20px;
+	margin-left : 35px;
+	margin-top:30px;
+	margin-right:30px;
 	float: left;
 	overflow: hidden;
+	border-radius: 5%;
 }
 
 .image {
@@ -181,20 +135,25 @@ h2 {
   height:100%;
   transition: .5s ease;
   background-color: rgba(0,0,0,0.5);
+  border-radius: 5%;
 }
 
 .text {
  	color: white;
 	font-size: 20px;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
+	width:100%;
+	height : 100%;
 	text-align: center;
 	font-weight: bold;
 }
-
+.move{
+    display: table-cell;
+    height: 190px;
+    width: 315px;
+    color: white;
+    vertical-align: middle;
+}
 
 /* slideSHOW */
 * {
@@ -276,35 +235,45 @@ to {
 		font-size: 20px
 	}
 }
-
-.move{
-	width: 100%;
-	height: 100%;
-	color:white;
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  background-color: rgba(0,0,0,0.8);
+}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev {
+	left:0;
+	border-radius: 3px 0 0 3px;
 }
 
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  
+}
+
+
+   
 </style>
 
-
-
-<title>네이버 로그인</title>
+<title>MeetingPlaner</title>
 </head>
 
 <body>
-	<header>
 
-		<div class="header_wrap">
-			<div class="img_div">
-				<img src="resources/images/logo1.png" class="logo">
-			</div>
-			<div class="header_name">
-				<img src="resources/images/30.png" class="name">
-			</div>
-			<div class="header_menu"></div>
-		</div>
-
-	</header>
-
+<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
 
 	<section class="main_section">
 	<!-- Text -->
@@ -317,6 +286,7 @@ to {
 				<h2>- GREG S. REID -</h2>
 			</div>
 			<div class="main_search_div">
+				
 				<input type="text" id="search" name="search" placeholder="모임 이름을 입력하세요.">
 				<input type="button" id="btn_search" name="btn_search" value="SEARCH">
 			</div>
@@ -326,102 +296,113 @@ to {
 		<div class="slideshow-container">
 		<div class="mySlides fade">
 		<div class="list">
-			<img src="resources/images/sports.jpg"
+			<img src="<%=application.getContextPath()%>/resources/images/index/sports_wa.jpg"
 				style="width: 100%; overflow: hidden;">
 			<div class="overlay"> 	
-			<div class="text"><a href="SlideShow" class="move">스포츠/레저</a></div>
+			<div class="text"><a href="meetingList/sports" class="move">스포츠 / 레저</a></div>
 		</div>
 		</div>
 		<div class="list">
-			<a href="/meeting"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">일상 / 이야기</div></div>
+			<img src="<%=application.getContextPath()%>/resources/images/index/life.jpg"
+				style="width: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/life" class="move">일상 / 이야기</a></div>
+		</div>
 		</div>
 		<div class="list">
-			<a href="SlideShow"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">취업 / 자기계발</div>	</div>
+			<img src="<%=application.getContextPath()%>/resources/images/index/game.jpg"
+				style="width: 100%; height: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/game" class="move">게임</a></div>
 		</div>
-		<div class="list">
-			<a href="SlideShow"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">게임</div>	</div>
+		</div>		<div class="list">
+			<img src="<%=application.getContextPath()%>/resources/images/index/group.jpg"
+				style="width: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/group" class="move">친목 / 모임</a></div>
 		</div>
-				<div class="list">
-			<a href="SlideShow"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">음악</div>	</div>
+		</div>		<div class="list">
+			<img src="<%=application.getContextPath()%>/resources/images/index/IT.jpg"
+				style="width: 100%; height:100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/it" class="move">IT / 기술</a></div>
 		</div>
-				<div class="list">
-			<a href="SlideShow"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">여행</div>	</div>
+		</div>		<div class="list">
+			<img src="<%=application.getContextPath()%>/resources/images/index/travel.jpg"
+				style="width: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/travel" class="move">여행</a></div>
+		</div>
 		</div>
 		</div>
 		<div class="mySlides fade">
 		<div class="list">
-			<a href="SlideShow"><img src="resources/images/30.png"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">건강 / 다이어트</div>	</div>
+			<img src="<%=application.getContextPath()%>/resources/images/index/kindjob.jpg"
+				style="width: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/job" class="move">취업 / 자기계발</a></div>
 		</div>
-		<div class="list">
-			<a href="/meeting"><img src="resources/images/logo1.png"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">IT / 기술</div>	</div>
+		</div>		<div class="list">
+			<img src="<%=application.getContextPath()%>/resources/images/index/culture.jpg"
+				style="width: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/culture" class="move">문화 / 예술</a></div>
 		</div>
-		<div class="list">
-			<a href="SlideShow"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">문화 / 예술</div>	</div>
+		</div>		<div class="list">
+			<img src="<%=application.getContextPath()%>/resources/images/index/eco.jpg"
+				style="width: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/eco" class="move">경제 / 비즈니스</a></div>
 		</div>
-		<div class="list">
-			<a href="SlideShow"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">교육 / 공부</div>	</div>
+		</div>		<div class="list">
+			<img src="<%=application.getContextPath()%>/resources/images/index/music.jpg"
+				style="width: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/music" class="move">음악</a></div>
 		</div>
-				<div class="list">
-			<a href="SlideShow"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">팬클럽</div>	</div>
+		</div>		<div class="list">
+			<img src="<%=application.getContextPath()%>/resources/images/index/health.png"
+				style="width: 100%; height:100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/health" class="move">건강 / 다이어트</a></div>
 		</div>
-				<div class="list">
-			<a href="SlideShow"><img src="resources/images/sports.jpg"
-				style="width: 100%; overflow: hidden;"></a>
-			<div class="overlay"><div class="text">나이 / 또래모임</div>	</div>
+		</div>		<div class="list">
+			<img src="<%=application.getContextPath()%>/resources/images/index/study.jpg"
+				style="width: 100%; overflow: hidden;">
+			<div class="overlay"> 	
+			<div class="text"><a href="meetingList/study" class="move">교육 / 공부</a></div>
 		</div>
 		</div>
-
-
+		</div>
+	 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+ 	 <a class="next" onclick="plusSlides(1)">&#10095;</a>
+<div id="dot" style="text-align:center; display: inline-block; height: 16px; margin-left: 48%;" >
+  <span class="dot"></span> <span class="dot"></span> 
 </div>
-<div id="dot" style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
 </div>
 		
-
 		<!-- Search -->
 		<div class="main_search">
-			<button id="crate_btn">CRATE</button>
+			<button id="crate_btn" onclick="meetingCrate()">CRATE</button>
 		</div>
-
-
-
-
-
 	</section>
 
-	<footer>
-		<div class="footer_wrap">
-			<div class="img_div">
-				<img src="resources/images/logo1.png" class="logo">
-			</div>
-		</div>
-	</footer>
+<c:import url="/WEB-INF/views/temp/footer.jsp"></c:import>
 
 
 <script type="text/javascript">
-var slideIndex = 0;
-showSlides();
+/* var slideIndex = 0;
+showSlides(); */
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
 
 function showSlides() {
     var i;
@@ -437,7 +418,11 @@ function showSlides() {
     }
     slides[slideIndex-1].style.display = "block";  
     dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 2000); // Change image every 2 seconds
+    setTimeout(showSlides, 4000); // Change image every 2 seconds
+}
+
+function meetingCrate() {
+	location.href = "meeting/meetingCrate";
 }
 </script>
 </body>
