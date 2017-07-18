@@ -14,8 +14,6 @@
 	background-color: yellow;
 	margin: 0 auto;
 }
-<<<<<<< HEAD
-
 /* main 시작!! */
 .main_text {
 	width: 100%;
@@ -258,15 +256,12 @@ to {
 .prev:hover, .next:hover {
 	
 }
-=======
->>>>>>> 170717
 </style>
 
 <title>네이버 로그인</title>
 </head>
 
 <body>
-<<<<<<< HEAD
 	<c:import url="/WEB-INF/views/temp/header.jsp" />
 	<section class="main_section">
 		<!-- Text -->
@@ -462,7 +457,6 @@ to {
 			location.href = "meeting/meetingCrate";
 		}
 	</script>
-=======
 <c:import url="/WEB-INF/views/temp/header.jsp" /> 
 	<section class="main_section">
 		<a href="javascript:;" onclick="window.open('weatherList', 'window', 'width=588, height=570');">Weather</a>
@@ -470,6 +464,5 @@ to {
 		<a href="reservation">Reservation</a>
 	</section>
 <c:import url="/WEB-INF/views/temp/footer.jsp" />
->>>>>>> 170717
 </body>
 </html>
