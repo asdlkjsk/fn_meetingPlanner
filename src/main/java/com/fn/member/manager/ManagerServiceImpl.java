@@ -2,8 +2,12 @@ package com.fn.member.manager;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fn.file.FileSaver;
 import com.fn.member.MemberDTO;
 import com.fn.member.MemberService;
 import com.fn.util.ListInfo;
@@ -11,16 +15,19 @@ import com.fn.util.ListInfo;
 @Service
 public class ManagerServiceImpl implements MemberService{
 
+	@Autowired
+	private ManagerDAOImpl managerDAOImpl;
+	private FileSaver filesaver;
+	
 	@Override
-	public MemberDTO memberLogin(String id, String pw, String grade) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
+		return managerDAOImpl.memberLogin(memberDTO);
 	}
 
 	@Override
-	public int memberJoin(MemberDTO memberDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int memberJoin(MemberDTO memberDTO, HttpSession session) throws Exception {
+				
+		return managerDAOImpl.memberJoin(memberDTO);
 	}
 
 	@Override

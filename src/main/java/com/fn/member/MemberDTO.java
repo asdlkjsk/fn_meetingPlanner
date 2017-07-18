@@ -12,7 +12,14 @@ public class MemberDTO {
 	private String email;
 	private String phone;
 	private String grade;
-	
+	private MultipartFile f1;
+
+	public MultipartFile getF1() {
+		return f1;
+	}
+	public void setF1(MultipartFile f1) {
+		this.f1 = f1;
+	}
 
 	public String getGender() {
 		return gender;

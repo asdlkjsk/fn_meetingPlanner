@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 <c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
 <style type="text/css">
 .main_section {
@@ -14,16 +14,13 @@
 	background-color: yellow;
 	margin: 0 auto;
 }
+
 </style>
-
-
-<title>네이버 로그인</title>
 </head>
-
 <body>
-<c:import url="/WEB-INF/views/temp/header.jsp" /> 
+	<c:import url="/WEB-INF/views/temp/header.jsp" /> 
 	<section class="main_section">
-		<h2>메인이다</h2>
+		
 	</section>
 <c:import url="/WEB-INF/views/temp/footer.jsp" />
 </body>

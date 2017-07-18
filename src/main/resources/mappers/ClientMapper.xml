@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mapper -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClientMapper">
+	<select id="clientLogin" parameterType="MemberDTO" resultType="ClientDTO">
+		select m.*, c.* from member m, client c 
+		where m.id=#{id} and m.pw=#{pw} and m.id=c.cid
+	</select>
+	
+	<insert id="clientJoin" parameterType="ClientDTO">
+		insert into client values(#{id})
+	</insert>
+</mapper>

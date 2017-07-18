@@ -2,6 +2,8 @@ package com.fn.member.manager;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.fn.member.MemberDAO;
@@ -10,17 +12,23 @@ import com.fn.util.ListInfo;
 
 @Repository
 public class ManagerDAOImpl implements MemberDAO{
-
+	
+	@Autowired
+	private SqlSession sqlSession;
+	private final String namespace="ManagerMapper.";
+	private final String namespace2="MemberMapper.";
+	
+	
 	@Override
-	public MemberDTO memberLogin(String id, String pw, String grade) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(namespace+"managerLogin", memberDTO);
 	}
 
 	@Override
 	public int memberJoin(MemberDTO memberDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		sqlSession.insert(namespace2+"Join", memberDTO);		
+		int result = sqlSession.insert(namespace+"managerJoin", memberDTO);
+		return result;
 	}
 
 	@Override

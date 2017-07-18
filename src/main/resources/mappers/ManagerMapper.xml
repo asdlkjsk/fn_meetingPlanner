@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mapper -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ManagerMapper">
+	<select id="managerLogin" parameterType="MemberDTO" resultType="ManagerDTO">
+		select m.*, mg.* from member m, manager mg 
+		where m.id=#{id} and m.pw=#{pw} and m.id=mg.storeId
+	</select>
+	
+	<insert id="managerJoin" parameterType="ManagerDTO">
+		insert into manager values(#{id}, #{storeName}, #{storePhone}, #{storePlace}, #{storeNum})		
+	</insert>
+</mapper>

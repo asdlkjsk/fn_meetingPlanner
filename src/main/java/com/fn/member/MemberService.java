@@ -2,15 +2,18 @@ package com.fn.member;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.fn.util.ListInfo;
+
 
 public interface MemberService {
 	
 	//login
-	public MemberDTO memberLogin(String id, String pw, String grade)throws Exception;
+	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception;
 	
 	//join
-	public int memberJoin(MemberDTO memberDTO) throws Exception;
+	public int memberJoin(MemberDTO memberDTO, HttpSession session) throws Exception;
 
 	//update
 	public int memberUpdate(MemberDTO memberDTO) throws Exception;
@@ -23,4 +26,6 @@ public interface MemberService {
 	
 	//list
 	public List<MemberDTO> memberList(ListInfo listInfo) throws Exception;
+
+	
 }

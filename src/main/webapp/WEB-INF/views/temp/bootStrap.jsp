@@ -6,3 +6,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/basic.css">
+<link href="<%=application.getContextPath()%>/resources/css/icheck-bootstrap.css" rel="stylesheet">
