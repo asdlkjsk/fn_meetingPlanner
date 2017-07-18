@@ -92,8 +92,8 @@
 					</div>
 					<div class="radio icheck-primary">
 						<input type="radio" id="primary2" name="grade" class="lg" value="manager" />
-						<label for="primary2">매니저</label>
-					</div>
+						<label for="primary2">매니저누구야?</label>
+					</div>  
 					
 					<div id="btn" role="button">
 						<p>로 그 인<p>
