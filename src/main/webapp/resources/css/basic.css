@@ -34,14 +34,10 @@ header {
 	display: inline-block;
 }
 
-#login_box {
-<<<<<<< HEAD
-	width: 70px;
+#login_box {	
+	width: auto;
 	height : 70px;
 	padding-top : 16px;
-=======
-	width: auto;
->>>>>>> 7c14ff3f4e58168fce19891e0f0f63fa12b548a9
 	float: right;
 	display: inline-block;
 	margin-top: 0px;

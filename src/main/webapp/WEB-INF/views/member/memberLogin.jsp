@@ -85,14 +85,7 @@
     				</div>
 					<div class="form-group">
 						<input type="password" class="form-control" id="pw" name="pw" type="password" placeholder="비밀번호" style="width: 100%; height: 40px;">
-					</div>			
-							
-					
-						<!-- <input type="radio" class="lg" value="client" name="grade" id="peterriver1" checked="checked">
-  						<label>클라이언트</label>  						
-					
-						<input type="radio" class="lg" value="manager" name="grade" id="peterriver1">
-						<label>매니저</label> -->
+					</div>	
 					<div class="radio icheck-primary">
 						<input type="radio" id="primary1" name="grade" class="lg" value="client" checked="checked"/>
 						<label for="primary1">일반회원</label>
