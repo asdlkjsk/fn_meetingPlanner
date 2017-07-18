@@ -22,18 +22,12 @@ public class MessageController {
 	
 	
 	//list
-<<<<<<< HEAD
 	@RequestMapping(value="ReadList", method=RequestMethod.GET)
 	public String megList(Model model, ListInfo listInfo) throws Exception {
 		List<MessageDTO> list = messageService.megList(listInfo);
 		model.addAttribute("list", list);
 		model.addAttribute("listInfo", listInfo);
 		model.addAttribute("board", "Read");
-=======
-	//@RequestMapping(value="megList", method=RequestMethod.GET)
-	public void megList(ListInfo listInfo, Model model) throws Exception {
->>>>>>> 170717
-		
 		return "message/megList";
 	}
 	
