@@ -22,7 +22,7 @@ public class MessageController {
 	
 	
 	//list
-	@RequestMapping(value="megList", method=RequestMethod.GET)
+	@RequestMapping(value="ReadList", method=RequestMethod.GET)
 	public String megList(Model model, ListInfo listInfo) throws Exception {
 		List<MessageDTO> list = messageService.megList(listInfo);
 		model.addAttribute("list", list);

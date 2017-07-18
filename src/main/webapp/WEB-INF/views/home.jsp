@@ -280,8 +280,8 @@ to {
 			</div>
 			<div class="main_search_div">
 				
-				<input type="text" id="search" name="search" placeholder="모임 이름을 입력하세요.">
 				<input type="button" id="btn_search" name="btn_search" value="SEARCH">
+				<input type="text" id="search" name="search" placeholder="모임 이름을 입력하세요.">
 			</div>
 		</div>
 		

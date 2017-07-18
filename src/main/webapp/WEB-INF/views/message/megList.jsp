@@ -8,6 +8,22 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
 <meta charset="utf-8">
+<script type="text/javascript">
+	$(function() {
+		var parameter = "&search=${listInfo.search}&find=${listInfo.find}";
+		
+		$(".go").click(function() {
+			
+			document.frm.curPage.value = $(this).attr("id");
+			document.frm.search.value = '${listInfo.search}';
+			document.frm.find.value = '${listInfo.find}';
+			document.frm.submit();
+			/* location.href= "${board}List?curPage="+cur+parameter; */
+		});
+		
+
+	});
+</script>
 <style type="text/css">
 body {
 	height: 100%;
@@ -49,10 +65,12 @@ li{
 }
 .table{
 	height: 85%;
+	border-collapse: collapse;
+	text-align: center;
 }
-
-
-
+span{
+	cursor: pointer;
+}
 </style>
 
 <title>MeetingPlaner</title>
@@ -83,20 +101,20 @@ li{
 							value="검색">
 					</form>
 				</div>
-				<table class="table">
+				<table class="table table-hover">
 					<thead>
 						<tr>
-							<td style="width: 18%;">보낸사람</td>
-							<td style="width: 60%;">내용</td>
-							<td style="width: 18%;">날짜</td>
+							<th style="width: 18%; text-align: center;">보낸사람</th>
+							<th style="width: 60%; text-align: center;">내용</th>
+							<th style="width: 18%; text-align: center;">날짜</th>
 						</tr>
 					</thead>
 					<tbody>
 					<c:forEach items="${list}" var="m">
 						<tr>
-							<td>${m.sendId}</td>
-							<td>${m.contents}</td>
-							<td>${m.sendDate}</td>
+							<td class="list_td" style="border-top: none;">${m.sendId}</td>
+							<td class="list_td" style="border-top: none;">${m.contents}</td>
+							<td class="list_td" style="border-top: none;">${m.sendDate}</td>
 						</tr>
 					</c:forEach>
 					</tbody>

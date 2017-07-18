@@ -35,15 +35,11 @@ public class MessageDAO {
 	
 	//list
 	public List<MessageDTO> megList(ListInfo listInfo) throws Exception {
-		List<MessageDTO> ar =sqlSession.selectList(namespace+"list", listInfo);
-		System.out.println(ar.size());
 		return sqlSession.selectList(namespace+"list", listInfo);
 	}
 	
 	//getCount
 	public int megCount(ListInfo listInfo) throws Exception {
-		int result = sqlSession.selectOne(namespace+"count", listInfo);
-		System.out.println("result : "+result);
 		return sqlSession.selectOne(namespace+"count", listInfo);
 	}
 	
