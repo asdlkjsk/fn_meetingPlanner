@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
+<<<<<<< HEAD
 	<configuration>
   		<typeAliases>
   			<typeAlias type="com.fn.member.MemberDTO" alias="MemberDTO" />
@@ -10,3 +11,12 @@
   			<typeAlias type="com.fn.member.manager.ManagerDTO" alias="ManagerDTO" />
   		</typeAliases>
 	</configuration>
+=======
+  <configuration>
+  	  	<typeAliases>
+  		<typeAlias type="com.fn.message.MessageDTO" alias="MessageDTO"/>
+  	</typeAliases>
+  </configuration>
+  
+  
+>>>>>>> pjw0717

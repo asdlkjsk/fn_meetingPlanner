@@ -279,10 +279,16 @@ to {
 				<h2>- GREG S. REID -</h2>
 			</div>
 			<div class="main_search_div">
+<<<<<<< HEAD
 
 				<input type="text" id="search" name="search"
 					placeholder="모임 이름을 입력하세요."> <input type="button"
 					id="btn_search" name="btn_search" value="SEARCH">
+=======
+				
+				<input type="button" id="btn_search" name="btn_search" value="SEARCH">
+				<input type="text" id="search" name="search" placeholder="모임 이름을 입력하세요.">
+>>>>>>> pjw0717
 			</div>
 		</div>
 
