@@ -24,6 +24,7 @@
 	<section class="main_section">
 		<a href="javascript:;" onclick="window.open('weatherList', 'window', 'width=588, height=570');">Weather</a>
 		<a href="calendar">Calendar</a>
+		<a href="reservation">Reservation</a>
 	</section>
 <c:import url="/WEB-INF/views/temp/footer.jsp" />
 </body>

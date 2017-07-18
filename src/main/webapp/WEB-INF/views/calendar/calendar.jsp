@@ -11,19 +11,23 @@
 <link rel="stylesheet" type="text/css" href="resources/css/fullcalendar.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/fullcalendar.print.css" media="print">
 <link rel="stylesheet" type="text/css" href="resources/css/sweetalert.css"/>
-<link rel="stylesheet" type="text/css" href="resources/css/select-theme-default.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/select-theme-dark.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/css-buttons.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/place.css"/>
 <script type="text/javascript" src="resources/js/moment.min.js"></script>
 <script type="text/javascript" src="resources/js/fullcalendar.js"></script>
 <script type="text/javascript" src="resources/js/ko.js"></script>
 <script type="text/javascript" src="resources/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="resources/js/select.js"></script>
 <script type="text/javascript">
+	var dateformat;
+	var selectedDate;
 	$(document).ready(function() {
         $("#calendar").fullCalendar({
-              defaultDate : "2016-05-12"
+              defaultDate : "2016-05-18"
             , validRange: {
                  start: '2016-05-18',
-                 end: '2016-06-02' 
+                 end: '2016-06-12' 
               }
         	, lang: "ko"
             , editable : true
@@ -138,7 +142,8 @@
       			/* var check = confirm(date.format()+'를 모임 날짜로 투표하겠습니까?');
       	        if(check)
       				$('.fc-widget-content[data-date='+date.format()+']').css('background-color', 'red'); */
-      			if($('#timebox').css('display') == 'block')
+      			dateformat = date.format();
+     			if($('#timebox').css('display') == 'block')
       				$('#timebox').hide();
 	      	    var pos = $(this).offset();
       			$('#timebox').css('top', (pos.top + 28) + 'px');    // 레이어 위치 지정
@@ -147,7 +152,11 @@
       			$('#timebox').focus();
       	    },
 	      	viewRender: function (view, element) {
-	      		$('.fc-widget-content[data-date='+'2016-06-01'+']').css('background-color', 'red');
+	      		var datebg = $('.fc-widget-content[data-date='+selectedDate+']');
+	      		var fcbg = datebg.closest('.fc-bg');
+	      		var td = fcbg.next('.fc-content-skeleton').find('thead tr td:nth-child('+(datebg.index()+1)+')');
+	      		td.css('color', 'white');
+	      		$('.fc-widget-content[data-date='+selectedDate+']').css('background-color', '#31708f')
 	      	}
         });
     });
@@ -261,6 +270,28 @@
    	    border-radius: 20px;
    	    box-shadow: 0px 0px 15px 0px #606060;
    	    z-index: 2;
+   	    padding: 15px;
+	}
+	
+	.select{
+		width: 320px;
+		z-index: 2;
+	}
+	
+	.select-target{
+		width: 320px;
+	}
+	
+	.select-content{
+		max-width: none !important;
+		max-height: 140px !important;
+	}
+	
+	#attend{
+	    display: block;
+    	font-weight: bold;
+    	text-align: center;
+    	margin: 20px 0;
 	}
 </style>
 </head>
@@ -281,24 +312,266 @@
      	</div>
 		<div class="modal-body">
 			<div class="tab-content">
-				<div class="tab-pane fade in active " id="date">
+				<div class="tab-pane fade in active" id="date">
 					<div id="calendar"></div>
 				</div>
-				<div class="tab-pane fade in" id="place">
-					<div>테스트</div>
+				<div class="tab-pane fade in active" id="place">
+					<div class="map_wrap">
+						<div id="map"
+							style="width: 100%; height: 620px; position: relative; overflow: hidden;"></div>
+
+						<div id="menu_wrap" class="bg_white">
+							<div class="option">
+								<div>
+									<form onsubmit="searchPlaces(); return false;">
+										키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
+										<button type="submit">검색하기</button>
+									</form>
+								</div>
+							</div>
+							<hr>
+							<ul id="placesList"></ul>
+							<div id="pagination"></div>
+						</div>
+					</div>
+					<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=bfe1aaa6425532e71b90eb50fa254710&libraries=services"></script>
+					<script type="text/javascript">
+						// 마커를 담을 배열입니다
+						var markers = [];
+						var container = document.getElementById('map');
+						var options = {
+							center: new daum.maps.LatLng(33.450701, 126.570667),
+							level: 3
+						};
+						var map = new daum.maps.Map(container, options);
+						
+						// 장소 검색 객체를 생성합니다
+						var ps = new daum.maps.services.Places();  
+
+						// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+						var infowindow = new daum.maps.InfoWindow({zIndex:1});
+
+						// 키워드로 장소를 검색합니다
+						searchPlaces();
+
+						// 키워드 검색을 요청하는 함수입니다
+						function searchPlaces() {
+
+						    var keyword = document.getElementById('keyword').value;
+
+						    if (!keyword.replace(/^\s+|\s+$/g, '')) {
+						        alert('키워드를 입력해주세요!');
+						        return false;
+						    }
+
+						    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+						    ps.keywordSearch( keyword, placesSearchCB); 
+						}
+
+						// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+						function placesSearchCB(status, data, pagination) {
+						    if (status === daum.maps.services.Status.OK) {
+
+						        // 정상적으로 검색이 완료됐으면
+						        // 검색 목록과 마커를 표출합니다
+						        displayPlaces(data.places);
+
+						        // 페이지 번호를 표출합니다
+						        displayPagination(pagination);
+
+						    } else if (status === daum.maps.services.Status.ZERO_RESULT) {
+
+						        alert('검색 결과가 존재하지 않습니다.');
+						        return;
+
+						    } else if (status === daum.maps.services.Status.ERROR) {
+
+						        alert('검색 결과 중 오류가 발생했습니다.');
+						        return;
+
+						    }
+						}
+
+						// 검색 결과 목록과 마커를 표출하는 함수입니다
+						function displayPlaces(places) {
+
+						    var listEl = document.getElementById('placesList'), 
+						    menuEl = document.getElementById('menu_wrap'),
+						    fragment = document.createDocumentFragment(), 
+						    bounds = new daum.maps.LatLngBounds(), 
+						    listStr = '';
+						    
+						    // 검색 결과 목록에 추가된 항목들을 제거합니다
+						    removeAllChildNods(listEl);
+
+						    // 지도에 표시되고 있는 마커를 제거합니다
+						    removeMarker();
+						    
+						    for ( var i=0; i<places.length; i++ ) {
+
+						        // 마커를 생성하고 지도에 표시합니다
+						        var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
+						            marker = addMarker(placePosition, i), 
+						            itemEl = getListItem(i, places[i], marker); // 검색 결과 항목 Element를 생성합니다
+
+						        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+						        // LatLngBounds 객체에 좌표를 추가합니다
+						        bounds.extend(placePosition);
+
+						        // 마커와 검색결과 항목에 mouseover 했을때
+						        // 해당 장소에 인포윈도우에 장소명을 표시합니다
+						        // mouseout 했을 때는 인포윈도우를 닫습니다
+						        (function(marker, title) {
+						            daum.maps.event.addListener(marker, 'mouseover', function() {
+						                displayInfowindow(marker, title);
+						            });
+
+						            daum.maps.event.addListener(marker, 'mouseout', function() {
+						                infowindow.close();
+						            });
+
+						            itemEl.onmouseover =  function () {
+						                displayInfowindow(marker, title);
+						            };
+
+						            itemEl.onmouseout =  function () {
+						                infowindow.close();
+						            };
+						        })(marker, places[i].title);
+
+						        fragment.appendChild(itemEl);
+						    }
+
+						    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+						    listEl.appendChild(fragment);
+						    menuEl.scrollTop = 0;
+
+						    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+						    map.setBounds(bounds);
+						}
+
+						// 검색결과 항목을 Element로 반환하는 함수입니다
+						function getListItem(index, places) {
+
+						    var el = document.createElement('li'),
+						    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+						                '<div class="info">' +
+						                '   <h5>' + places.title + '</h5>';
+
+						    if (places.newAddress) {
+						        itemStr += '    <span>' + places.newAddress + '</span>' +
+						                    '   <span class="jibun gray">' +  places.address  + '</span>';
+						    } else {
+						        itemStr += '    <span>' +  places.address  + '</span>'; 
+						    }
+						                 
+						      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
+						                '</div>';           
+
+						    el.innerHTML = itemStr;
+						    el.className = 'item';
+
+						    return el;
+						}
+
+						// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+						function addMarker(position, idx, title) {
+						    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+						        imageSize = new daum.maps.Size(36, 37),  // 마커 이미지의 크기
+						        imgOptions =  {
+						            spriteSize : new daum.maps.Size(36, 691), // 스프라이트 이미지의 크기
+						            spriteOrigin : new daum.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+						            offset: new daum.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+						        },
+						        markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+						            marker = new daum.maps.Marker({
+						            position: position, // 마커의 위치
+						            image: markerImage 
+						        });
+
+						    marker.setMap(map); // 지도 위에 마커를 표출합니다
+						    markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+						    return marker;
+						}
+
+						// 지도 위에 표시되고 있는 마커를 모두 제거합니다
+						function removeMarker() {
+						    for ( var i = 0; i < markers.length; i++ ) {
+						        markers[i].setMap(null);
+						    }   
+						    markers = [];
+						}
+
+						// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+						function displayPagination(pagination) {
+						    var paginationEl = document.getElementById('pagination'),
+						        fragment = document.createDocumentFragment(),
+						        i; 
+
+						    // 기존에 추가된 페이지번호를 삭제합니다
+						    while (paginationEl.hasChildNodes()) {
+						        paginationEl.removeChild (paginationEl.lastChild);
+						    }
+
+						    for (i=1; i<=pagination.last; i++) {
+						        var el = document.createElement('a');
+						        el.href = "#";
+						        el.innerHTML = i;
+
+						        if (i===pagination.current) {
+						            el.className = 'on';
+						        } else {
+						            el.onclick = (function(i) {
+						                return function() {
+						                    pagination.gotoPage(i);
+						                }
+						            })(i);
+						        }
+
+						        fragment.appendChild(el);
+						    }
+						    paginationEl.appendChild(fragment);
+						}
+
+						// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+						// 인포윈도우에 장소명을 표시합니다
+						function displayInfowindow(marker, title) {
+						    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+						    infowindow.setContent(content);
+						    infowindow.open(map, marker);
+						}
+
+						 // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+						function removeAllChildNods(el) {   
+						    while (el.hasChildNodes()) {
+						        el.removeChild (el.lastChild);
+						    }
+						}
+						$('.tab-content div:nth-child(2)').removeClass('active');
+						$('.tab-content div:nth-child(3)').removeClass('active');
+					</script>
 				</div>
-				<div class="tab-pane fade in" id="board">
+				<div class="tab-pane fade in active" id="board">
 					<div>테스트</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div id="timebox">
+		<span id="attend">참석할 시간을 선택해주세요.</span>
 		<select class="demo">
-			<option value="">Select a country...</option>
-			<option value="United States">United States</option>
-			<option value="United Kingdom">United Kingdom</option>
+			<option value="morning">아침</option>
+			<option value="midday">점심</option>
+			<option value="daytime">낮</option>
+			<option value="evening">저녁</option>
+			<option value="night">밤</option>
 		</select>
+		<div style="margin-top: 60px; text-align: center;">
+			<button class="button blue">OK</button>
+			<button class="button red" style="margin-left: 30px;">Cancel</button>
+		</div>
 	</div>
 	<button id="test">날짜선택완료</button>
 </body>
@@ -334,9 +607,41 @@
     }, function(){
     	mouse_is_inside=false;
     });
+    
+    $(document).on('mouseenter', '.select-option', function(){
+    	mouse_is_inside=true;
+    }).on('mouseleave', '.select-option', function(){
+    	mouse_is_inside=false;
+    });
 
     $(document).mouseup(function(){ 
-        if(!mouse_is_inside) $('#timebox').hide();
+        if(!mouse_is_inside) $('#timebox').fadeOut(200);
+    });
+    
+    $('.blue').click(function(){
+    	selectedDate = dateformat;
+    	var datebg = $('.fc-widget-content[data-date='+dateformat+']');
+    	var fcbg = datebg.closest('.fc-day-grid').find('.fc-bg');
+    	fcbg.each(function(){
+    		var datetd = $(this).next('.fc-content-skeleton').find('td');
+    		datetd.each(function(){
+    			if($(this).is('[data-date]'))
+        			$(this).css('color', '#333');
+    		});
+    		var td = $(this).find('td');
+    		td.each(function(){
+    			if($(this).is('[data-date]'))
+        			$(this).css('background-color', 'white');
+    		});
+    	});
+    	var date = datebg.closest('.fc-bg').next('.fc-content-skeleton').find('thead tr td:nth-child('+(datebg.index()+1)+')');
+		date.css('color', 'white');
+    	datebg.css('background-color', '#31708f');
+    	$('#timebox').fadeOut(200);
+    });
+    
+    $('.red').click(function(){
+    	$('#timebox').fadeOut(200);
     });
     
     $('select.demo').each(function(){
