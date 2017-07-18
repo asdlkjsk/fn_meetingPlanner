@@ -11,7 +11,6 @@
 .main_section {
 	width: 1150px;
 	height: 810px;
-	background-color: yellow;
 	margin: 0 auto;
 }
 /* main 시작!! */
@@ -417,6 +416,9 @@ to {
 		<div class="main_search">
 			<button id="crate_btn" onclick="meetingCrate()">CRATE</button>
 		</div>
+		<a href="javascript:;" onclick="window.open('weatherList', 'window', 'width=588, height=570');">Weather</a>
+		<a href="calendar">Calendar</a>
+		<a href="reservation">Reservation</a>
 	</section>
 
 	<c:import url="/WEB-INF/views/temp/footer.jsp" />
@@ -457,12 +459,5 @@ to {
 			location.href = "meeting/meetingCrate";
 		}
 	</script>
-<c:import url="/WEB-INF/views/temp/header.jsp" /> 
-	<section class="main_section">
-		<a href="javascript:;" onclick="window.open('weatherList', 'window', 'width=588, height=570');">Weather</a>
-		<a href="calendar">Calendar</a>
-		<a href="reservation">Reservation</a>
-	</section>
-<c:import url="/WEB-INF/views/temp/footer.jsp" />
 </body>
 </html>
