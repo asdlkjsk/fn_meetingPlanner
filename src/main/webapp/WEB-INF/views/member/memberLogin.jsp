@@ -6,7 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/basic.css">
+<link href="<%=application.getContextPath()%>/resources/css/icheck-bootstrap.css" rel="stylesheet">
 <script type="text/javascript">
  	$(function() {
  		$("input[name=grade]").click(function(){
@@ -64,11 +69,14 @@
 	height: 50px;
 	background: #44aaff;
 	text-align: center;
-	padding-top: 10px;
+	padding-top: 5px;
 	font-size: 30px;
-	margin-top: 70px;
+	margin-top: 40px;
 	color: white;
 	
+}
+.form-group{
+	margin-bottom: 30px;
 }
 </style>
 </head>
@@ -90,7 +98,7 @@
 						<input type="radio" id="primary1" name="grade" class="lg" value="client" checked="checked"/>
 						<label for="primary1">일반회원</label>
 					</div>
-					<div class="radio icheck-primary">
+					<div class="radio icheck-primary" style="padding-top: 20px;">
 						<input type="radio" id="primary2" name="grade" class="lg" value="manager" />
 						<label for="primary2">매니저누구야?</label>
 					</div>  
