@@ -20,7 +20,7 @@ public class WeatherController {
 	
 	@RequestMapping(value="weatherList", method=RequestMethod.GET)
 	public String list(){
-		return "weather/weather";
+		return "Weather/weather";
 	}
 	
 	@ResponseBody
@@ -34,19 +34,5 @@ public class WeatherController {
 	@RequestMapping(value="weatherGrid", method=RequestMethod.POST)
 	public WeatherDTO grid(WeatherDTO weatherDTO){
 		return weatherService.weatherGrid(weatherDTO);
-	}
-	
-	@RequestMapping(value="weatherData", method=RequestMethod.POST)
-	public String data(Model model, String url, String stationName){
-		if(url != null)
-			model.addAttribute("url", url);
-		if(stationName != null)
-			model.addAttribute("stationName", stationName);
-		return "temp/proxy";
-	}
-	
-	@RequestMapping(value="calendar", method=RequestMethod.GET)
-	public String calendar(){
-		return "calendar/calendar";
 	}
 }

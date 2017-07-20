@@ -22,7 +22,7 @@ public class ClientController {
 	@Autowired 
 	private ClientServiceImpl clientServiceImpl;
 	
-	@RequestMapping(value="memberJoin", method=RequestMethod.POST)
+	@RequestMapping("memberJoin")
 	public void memberJoin(){}
 	
 	@RequestMapping("memberLogin")

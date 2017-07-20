@@ -1,7 +1,5 @@
 package com.fn.meeting;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +12,7 @@ import com.fn.message.MessageService;
 import com.fn.util.ListInfo;
 
 @Controller
-//@RequestMapping(value="/message/**")
+@RequestMapping(value="/message/**")
 public class MessageController {
 
 	@Autowired
@@ -22,13 +20,9 @@ public class MessageController {
 	
 	
 	//list
-	@RequestMapping(value="ReadList", method=RequestMethod.GET)
-	public String megList(Model model, ListInfo listInfo) throws Exception {
-		List<MessageDTO> list = messageService.megList(listInfo);
-		model.addAttribute("list", list);
-		model.addAttribute("listInfo", listInfo);
-		model.addAttribute("board", "Read");
-		return "message/megList";
+	@RequestMapping(value="megList", method=RequestMethod.GET)
+	public void megList(ListInfo listInfo, Model model) throws Exception {
+		
 	}
 	
 	//view

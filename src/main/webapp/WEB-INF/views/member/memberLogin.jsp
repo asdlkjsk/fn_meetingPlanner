@@ -9,23 +9,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/1reset.css">
-<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/basic.css">
-=======
 <link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/basic1.css">
->>>>>>> 4d820bed2254ace7143544f1471b0ad0c8e1405f
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/basic.css">
 <link href="<%=application.getContextPath()%>/resources/css/icheck-bootstrap.css" rel="stylesheet">
 <script type="text/javascript">
  	$(function() {
  		$("input[name=grade]").click(function(){
-	        if($("#peterriver1").prop("checked")){       
-	            $("input[id=peterriver1]").prop("checked",true);	         
-	            $("input[id=peterriver2]").prop("checked",false);
-	        }else if($("#peterriver2").prop("checked")) {
-	        	$("input[id=peterriver1]").prop("checked",false);	         
-	            $("input[id=peterriver2]").prop("checked",true);
+	        if($("#primary1").prop("checked")){       
+	            $("input[id=primary1]").prop("checked",true);	         
+	            $("input[id=primary2]").prop("checked",false);
+	        }else if($("#primary2").prop("checked")) {
+	        	$("input[id=primary1]").prop("checked",false);	         
+	            $("input[id=primary2]").prop("checked",true);
 	        }
 		});
  		
@@ -48,15 +43,12 @@
 	margin: 0 auto;
 }
 
-
-
 #login_input {
-	width: 400px;
-	height: 565px;
+	width: 550px;
+	height: 300px;
 	margin: auto;
 	/* background: #44aadd; */
 	padding-top: 70px;
-	border-bottom: 1px solid #d5d5d5;
 }
 
 #hd {
@@ -77,60 +69,47 @@
 	height: 50px;
 	background: #44aaff;
 	text-align: center;
-	padding-top: 8px;
+	padding-top: 5px;
 	font-size: 30px;
+	margin-top: 40px;
 	color: white;
-	border-radius: 5px;
-	margin-top: 30px;
 	
 }
-
-#btn:hover {
-	background: #0070cc;
-}
-
-.inpu {
-	margin-bottom: -1px;
-}
-
-.form-control{
-	border-radius: 0px !important;
+.form-group{
+	margin-bottom: 30px;
 }
 </style>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/temp/header.jsp" />
 	<section class="main_section">
-	<div id="login_input">
-			<form id="frm_login" action="memberLogin" method="post">
-				<div id="hd">
-					<h2 style="font-weight: bold;">LOGIN</h2>
-				</div>
-				<div class="inpu">
-     				<input type="text" class="form-control" id="id" name="id" placeholder="아이디" style="width: 100%; height: 50px;">
-   				</div>
-				<div class="inpu">
-					<input type="password" class="form-control" id="pw" name="pw" type="password" placeholder="비밀번호" style="width: 100%; height: 50px;">
-				</div>	
-				<div class="radio icheck-peterriver" style="margin-top: 50px !important;">
-					<input type="radio" id="peterriver1" name="grade" class="lg" value="client" checked="checked"/>
-					<label for="peterriver1">일반회원</label>
-				</div>
-				<div class="radio icheck-peterriver" style="padding-top: 20px;">
-					<input type="radio" id="peterriver2" name="grade" class="lg" value="manager" />
-					<label for="peterriver2">매니저누구야?</label>
-				</div>				
-				<div id="btn" role="button">
-					<p>로 그 인<p>
-				</div>
+		<div id="login_input">
+			<form id="frm_login" action="memberLogin" method="post">				
+					<div id="hd">
+						<h2>LOGIN</h2>
+					</div>					
+					<div class="form-group">
+      					<input type="text" class="form-control" id="id" name="id" placeholder="아이디" style="width: 100%; height: 40px;">
+    				</div>
+					<div class="form-group">
+						<input type="password" class="form-control" id="pw" name="pw" type="password" placeholder="비밀번호" style="width: 100%; height: 40px;">
+					</div>	
+					<div class="radio icheck-primary">
+						<input type="radio" id="primary1" name="grade" class="lg" value="client" checked="checked"/>
+						<label for="primary1">일반회원</label>
+					</div>
+					<div class="radio icheck-primary" style="padding-top: 20px;">
+						<input type="radio" id="primary2" name="grade" class="lg" value="manager" />
+						<label for="primary2">매니저누구야?</label>
+					</div>  
+					
+					<div id="btn" role="button">
+						<p>로 그 인<p>
+					</div>
 			</form>
 			<br>
-			</div>
-			<div style="margin-left: 410px; margin-top: 30px; width: 400px;">
-				<a href="memberAgree">회원가입　</a>│
-				<a href="">　아이디 찾기　</a>│
-				<a href="">　비밀번호 찾기</a>
-			</div>		
+			<p><a href="memberAgree">회원가입</a></p>
+		</div>		
 	</section>
 </body>
 </html>
