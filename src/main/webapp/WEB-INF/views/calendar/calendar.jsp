@@ -8,12 +8,14 @@
 <title>Insert title here</title>
 <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 <c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/fullcalendar.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/fullcalendar.print.css" media="print">
 <link rel="stylesheet" type="text/css" href="resources/css/sweetalert.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/select-theme-dark.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/css-buttons.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/place.css"/>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/js/moment.min.js"></script>
 <script type="text/javascript" src="resources/js/fullcalendar.js"></script>
 <script type="text/javascript" src="resources/js/ko.js"></script>

@@ -45,8 +45,7 @@ $(function() {
 		$("#frm_agree").attr("action", "memberJoin");
 	} */
 	
-});
-	
+});	
 </script>
 </body>
 </html>
