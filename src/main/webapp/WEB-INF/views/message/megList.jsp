@@ -8,6 +8,22 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
 <meta charset="utf-8">
+<script type="text/javascript">
+	$(function() {
+		var parameter = "&search=${listInfo.search}&find=${listInfo.find}";
+		
+		$(".go").click(function() {
+			
+			document.frm.curPage.value = $(this).attr("id");
+			document.frm.search.value = '${listInfo.search}';
+			document.frm.find.value = '${listInfo.find}';
+			document.frm.submit();
+			/* location.href= "${board}List?curPage="+cur+parameter; */
+		});
+		
+
+	});
+</script>
 <style type="text/css">
 body {
 	height: 100%;
@@ -46,15 +62,15 @@ li{
 	text-align: center;
 	border: 1px solid black;
 	font-size: 20px;
-	
 }
-
-table {
-	width: 100%;
-	height: 90%;
+.table{
+	height: 85%;
+	border-collapse: collapse;
+	text-align: center;
 }
-
-
+span{
+	cursor: pointer;
+}
 </style>
 
 <title>MeetingPlaner</title>
@@ -79,34 +95,29 @@ table {
 				<div>
 					<form action="${board}List" name="frm">
 						<input type="hidden" name="curPage"> <select name="search">
-							<option value="title">title</option>
-							<option value="writer">writer</option>
+							<option value="sendId">sendId</option>
 							<option value="contents">contents</option>
 						</select> <input type="text" name="find"> <input type="submit"
 							value="검색">
 					</form>
 				</div>
-				<table class="table">
+				<table class="table table-hover">
 					<thead>
 						<tr>
-							<td>보낸사람</td>
-							<td>내용</td>
-							<td>날짜</td>
+							<th style="width: 18%; text-align: center;">보낸사람</th>
+							<th style="width: 60%; text-align: center;">내용</th>
+							<th style="width: 18%; text-align: center;">날짜</th>
 						</tr>
 					</thead>
-
-					<tr>
-						<td>보</td>
-						<td>내</td>
-						<td>날</td>
-					</tr>
-					<c:forEach items="${message}" var="m">
+					<tbody>
+					<c:forEach items="${list}" var="m">
 						<tr>
-							<td>{m.id}</td>
-							<td>{m.contents}</td>
-							<td>{m.reg_date}</td>
+							<td class="list_td" style="border-top: none;">${m.sendId}</td>
+							<td class="list_td" style="border-top: none;">${m.contents}</td>
+							<td class="list_td" style="border-top: none;">${m.sendDate}</td>
 						</tr>
 					</c:forEach>
+					</tbody>
 				</table>
 
 				<c:if test="${listInfo.curBlock > 1}">
@@ -121,8 +132,6 @@ table {
 				</c:if>
 			</div>
 		</div>
-
-
 	</section>
 
 <c:import url="/WEB-INF/views/temp/footer.jsp"></c:import>

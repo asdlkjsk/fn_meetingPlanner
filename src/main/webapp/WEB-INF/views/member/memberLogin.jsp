@@ -9,8 +9,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/1reset.css">
 <link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/basic.css">
+=======
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/css/basic1.css">
+>>>>>>> 4d820bed2254ace7143544f1471b0ad0c8e1405f
 <link href="<%=application.getContextPath()%>/resources/css/icheck-bootstrap.css" rel="stylesheet">
 <script type="text/javascript">
  	$(function() {

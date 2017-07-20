@@ -185,6 +185,28 @@ label {
 	</form>
 	</section>
 <c:import url="/WEB-INF/views/temp/footer.jsp" />
+<<<<<<< HEAD
 
+=======
+<script type="text/javascript">
+$(function() {	
+	$('#client').click(function() {
+		if($(this).prop('checked'), true){
+			$('#manager').prop('checked', false);
+			$(this).id();
+		}else {
+			$('#manager').prop('checked', true);			
+		}
+	});
+	
+ 	/* if('${param.grade}' == 'c') {
+		$("#frm_agree").attr("action", "memberJoin");
+	}else if('${param.grade}' == 'm') {
+		$("#frm_agree").attr("action", "memberJoin");
+	} */
+	
+});	
+</script>
+>>>>>>> 4d820bed2254ace7143544f1471b0ad0c8e1405f
 </body>
 </html>

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
+=======
+    pageEncoding="UTF-8"%>
+<%@ page session="false"%>
+>>>>>>> 4d820bed2254ace7143544f1471b0ad0c8e1405f
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,17 +12,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
 <style type="text/css">
-body {
-	height: 100%;
-	overflow: hidden;
-}
-
 .main_section {
 	width: 1150px;
 	height: 810px;
 	margin: 0 auto;
 }
-
 /* main 시작!! */
 .main_text {
 	width: 100%;
@@ -262,7 +261,7 @@ to {
 }
 </style>
 
-<title>MeetingPlaner</title>
+<title>네이버 로그인</title>
 </head>
 
 <body>
@@ -278,10 +277,8 @@ to {
 				<h2>- GREG S. REID -</h2>
 			</div>
 			<div class="main_search_div">
-
-				<input type="text" id="search" name="search"
-					placeholder="모임 이름을 입력하세요."> <input type="button"
-					id="btn_search" name="btn_search" value="SEARCH">
+				<input type="button" id="btn_search" name="btn_search" value="SEARCH">
+				<input type="text" id="search" name="search" placeholder="모임 이름을 입력하세요.">
 			</div>
 		</div>
 
@@ -423,6 +420,9 @@ to {
 		<div class="main_search">
 			<button id="crate_btn" onclick="meetingCrate()">CREATE</button>
 		</div>
+		<a href="javascript:;" onclick="window.open('weatherList', 'window', 'width=588, height=570');">Weather</a>
+		<a href="calendar">Calendar</a>
+		<a href="reservation">Reservation</a>
 	</section>
 
 	<c:import url="/WEB-INF/views/temp/footer.jsp" />
