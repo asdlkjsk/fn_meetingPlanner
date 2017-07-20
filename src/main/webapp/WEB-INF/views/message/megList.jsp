@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -12,16 +11,14 @@
 	$(function() {
 		var parameter = "&search=${listInfo.search}&find=${listInfo.find}";
 		
-		$(".go").click(function() {
-			
+		$(".go").click(function() {	
 			document.frm.curPage.value = $(this).attr("id");
 			document.frm.search.value = '${listInfo.search}';
 			document.frm.find.value = '${listInfo.find}';
+			document.frm.recvId.value = '${member.id}';
 			document.frm.submit();
 			/* location.href= "${board}List?curPage="+cur+parameter; */
 		});
-		
-
 	});
 </script>
 <style type="text/css">
@@ -47,7 +44,7 @@ body {
 	height : 100%;
 	float: left;	
 	display: inline-block;
-	margin-top: 30%;
+	margin-top: 15%;
 }
 #msg_right{
 	width : 80%;
@@ -57,11 +54,11 @@ body {
 	border-left: 1px solid #44aaff;
 }
 
-
 li{
 	text-align: center;
-	border: 1px solid black;
 	font-size: 20px;
+	height: 50px;
+	margin-top: 20px;
 }
 .table{
 	height: 85%;
@@ -71,6 +68,10 @@ li{
 span{
 	cursor: pointer;
 }
+#meg_head{
+	font-size: 30px;
+}
+
 </style>
 
 <title>MeetingPlaner</title>
@@ -82,23 +83,27 @@ span{
 
 	<section class="main_section">
 		<div id="message_rap">
-			<div id="msg_left">
+	<c:import url="/WEB-INF/views/temp/megLeft.jsp"></c:import>
+<%-- 			<div id="msg_left">
 				<ul>
-					<li><a href="#">쪽지보내기</a></li>
-					<li><a href="#">내게쓰기</a></li>
-					<li><a href="#">받은쪽지함</a></li>
-					<li><a href="#">보낸쪽지함</a></li>
-					<li><a href="#">휴지통</a></li>
+					<li><a href="<%=application.getContextPath() %>/message/ReadList?curPage=1&find=&search=sendId&recvId=${list[0].recvId}&board=Read" id="meg_head" style="text-decoration: none !important;"><img src="<%=application.getContextPath()%>/resources/images/meg/bmeg60.png" style="width: 50px; height: auto; vertical-align:middle;">쪽지함</a></li>
+					<li><a href="#" style="text-decoration: none;">쪽지보내기</a></li>
+					<li><a href="#" style="text-decoration: none;">받은쪽지함</a></li>
+					<li><a href="#" style="text-decoration: none;">보낸쪽지함</a></li>
+					<li><a href="#" style="text-decoration: none;">휴지통</a></li>
 				</ul>
-			</div>
+			</div> --%>
 			<div id="msg_right" class="container">
 				<div>
 					<form action="${board}List" name="frm">
-						<input type="hidden" name="curPage"> <select name="search">
+						<input type="hidden" name="curPage"> 
+						<select name="search">
 							<option value="sendId">sendId</option>
 							<option value="contents">contents</option>
-						</select> <input type="text" name="find"> <input type="submit"
-							value="검색">
+						</select>
+						<input type="hidden" name="recvId" value="${param.recvId}"> 
+						<input type="text" name="find"> 
+						<input type="submit" value="검색">
 					</form>
 				</div>
 				<table class="table table-hover">
@@ -113,7 +118,7 @@ span{
 					<c:forEach items="${list}" var="m">
 						<tr>
 							<td class="list_td" style="border-top: none;">${m.sendId}</td>
-							<td class="list_td" style="border-top: none;">${m.contents}</td>
+							<td class="list_td" style="border-top: none;"><a href="${board}View?megNum=${m.megNum}">${m.contents}</a></td>
 							<td class="list_td" style="border-top: none;">${m.sendDate}</td>
 						</tr>
 					</c:forEach>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -68,7 +67,7 @@ body {
 	float: right;
 }
 
-#crate_btn {
+#create_btn {
 	width: 100%;
 	height: 100%;
 	font-size: 24px;
@@ -83,11 +82,11 @@ body {
 	font-size: 24px;
 }
 
-#crate_btn:hover {
+#create_btn:hover {
 	background-color: #5844ff
 }
 
-#crate_btn:active {
+#create_btn:active {
 	background-color: #44aaff;
 	box-shadow: 0 5px #666;
 	transform: translateY(4px);
@@ -420,7 +419,7 @@ to {
 
 		<!-- Search -->
 		<div class="main_search">
-			<button id="crate_btn" onclick="meetingCrate()">CRATE</button>
+			<button id="create_btn" onclick="meetingCreate()">CREATE</button>
 		</div>
 	</section>
 
@@ -458,8 +457,8 @@ to {
 			setTimeout(showSlides, 4000); // Change image every 2 seconds
 		}
 
-		function meetingCrate() {
-			location.href = "meeting/meetingCrate";
+		function meetingCreate() {
+			location.href = "meeting/meetingCreate";
 		}
 	</script>
 </body>

@@ -12,7 +12,7 @@ import com.fn.message.SendMessageService;
 import com.fn.util.ListInfo;
 
 @Controller
-//@RequestMapping(value="/SendMessage/**")
+@RequestMapping(value="/Message/**")
 public class SendMessageController {
 	
 	@Autowired
@@ -37,7 +37,7 @@ public class SendMessageController {
 	}
 	
 	//write
-	//@RequestMapping(value="sendWrite", method=RequestMethod.POST)
+	@RequestMapping(value="sendWrite", method=RequestMethod.POST)
 	public void sendWrite(SendMessageDTO sendMessageDTO, RedirectAttributes redirectAttributes) throws Exception {
 		
 	}

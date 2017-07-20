@@ -22,7 +22,7 @@ public class MessageController {
 	
 	
 	//list
-	@RequestMapping(value="ReadList", method=RequestMethod.GET)
+	@RequestMapping(value="/ReadList", method=RequestMethod.GET)
 	public String megList(Model model, ListInfo listInfo) throws Exception {
 		List<MessageDTO> list = messageService.megList(listInfo);
 		model.addAttribute("list", list);
@@ -33,26 +33,47 @@ public class MessageController {
 	}
 	
 	//view
-	//@RequestMapping(value="megView", method=RequestMethod.GET)
-	public void megView(Integer megNum, Model model) throws Exception {
+	@RequestMapping(value="/ReadView", method=RequestMethod.GET)
+	public String megView(Integer megNum, Model model) throws Exception {
+		MessageDTO messageDTO = messageService.megView(megNum);
+		model.addAttribute("meg", messageDTO);
+		model.addAttribute("board", "Read");
 		
+		return "message/megView";
 	}
 	
 	//writeForm
-	//@RequestMapping(value="megWrite", method=RequestMethod.GET)
-	public void megWrite(Model model) throws Exception {
-		
+	@RequestMapping(value="MegWrite", method=RequestMethod.GET)
+	public String megWrite(Model model) throws Exception {
+		model.addAttribute("path", "Read");
+		return "message/megWrite";
 	}
 	
 	//write
-	//@RequestMapping(value="megWrite", method=RequestMethod.POST)
-	public void megWrite(MessageDTO MessageDTO, RedirectAttributes redirectAttributes) throws Exception {
+	@RequestMapping(value="MegWrite", method=RequestMethod.POST)
+	public String megWrite(MessageDTO MessageDTO, RedirectAttributes redirectAttributes) throws Exception {
+		System.out.println("Controller");
+		int result = messageService.megWrite(MessageDTO);
+		String message = "FAIL";
+		if(result>0){
+			message = "SUCCESS";			
+		}
 		
+		redirectAttributes.addFlashAttribute("message", message);
+		return "redirect:ReadList?curPage=1&find=&search=sendId&recvId="+MessageDTO.getSendId();
 	}
 	
 	//delete
-	//@RequestMapping(value="megDelete", method=RequestMethod.GET)
-	public void megDelete(Integer megNum, RedirectAttributes redirectAttributes) throws Exception {
+	@RequestMapping(value="megDelete", method=RequestMethod.GET)
+	public String megDelete(Integer megNum, RedirectAttributes redirectAttributes) throws Exception {
+		int result = messageService.megDelete(megNum);
+		String message = "FAIL";
+		if(result>0){
+			message = "SUCCESS";			
+		}
 		
+		redirectAttributes.addFlashAttribute("message", message);
+		
+		return "message/megList";
 	}	
 }

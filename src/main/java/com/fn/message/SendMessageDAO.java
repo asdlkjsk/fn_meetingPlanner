@@ -16,10 +16,10 @@ public class SendMessageDAO {
 	private SqlSession sqlSession;
 	private final String namespace = "SendMessageMapper.";
 	
-	//insert
+/*	//insert
 	public int sendWrite(SendMessageDTO sendMessageDTO) throws Exception {
 		return 0;
-	}
+	}*/
 	
 	//delete
 	public int sendDelete(int megNum) throws Exception {
@@ -33,13 +33,12 @@ public class SendMessageDAO {
 	}
 	
 	//list
-	public List<SendMessageDTO> sendList(ListInfo listInfo) throws Exception {
-		List<SendMessageDTO> ar = new ArrayList<SendMessageDTO>();
-		return ar;
+	public List<SendMessageDTO> megList(ListInfo listInfo) throws Exception {
+		return sqlSession.selectList(namespace+"list", listInfo);
 	}
 	
 	//getCount
 	public int sendCount(ListInfo listInfo) throws Exception {
-		return 0;
+		return sqlSession.selectOne(namespace+"count", listInfo);
 	}
 }
