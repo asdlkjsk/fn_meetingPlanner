@@ -1,6 +1,5 @@
 package com.fn.message;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,13 +22,12 @@ public class SendMessageDAO {
 	
 	//delete
 	public int sendDelete(int megNum) throws Exception {
-		return 0;
+		return sqlSession.delete(namespace+"delete", megNum);
 	}
 	
 	//view
 	public SendMessageDTO sendView(int megNum) throws Exception {
-		SendMessageDTO sendMessageDTO = new SendMessageDTO();
-		return sendMessageDTO;
+		return sqlSession.selectOne(namespace+"view", megNum);
 	}
 	
 	//list

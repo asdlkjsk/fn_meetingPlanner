@@ -15,21 +15,24 @@ public class SendMessageService {
 	
 	//list
 	public List<SendMessageDTO> sendList(ListInfo listInfo) throws Exception {
-		return null;
+		int count = sendMessageDAO.sendCount(listInfo);
+		listInfo.makePage(count);
+		listInfo.makeRow();
+		return sendMessageDAO.megList(listInfo);
 	}
 	
 	//view
 	public SendMessageDTO sendView(int megNum) throws Exception {
-		return null;
+		return sendMessageDAO.sendView(megNum);
 	}
 	
-	//write
+/*	//write
 	public int sendWrite(SendMessageDTO sendMessageDTO) throws Exception {
 		return 0;
 	}
-	
+	*/
 	//delete
 	public int sendDelete(int megNum) throws Exception {
-		return 0;
+		return sendMessageDAO.sendDelete(megNum);
 	}
 }

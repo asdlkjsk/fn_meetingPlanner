@@ -21,6 +21,9 @@ public class ListInfo {
 	private String recvId;
 	
 	public String getRecvId() {
+		if(recvId==null){
+			recvId="";
+		}
 		return recvId;
 	}
 
@@ -28,8 +31,20 @@ public class ListInfo {
 		this.recvId = recvId;
 	}
 
+	
+	//sendId
+	private String sendId;
 
+	public String getSendId() {
+		return sendId;
+	}
 
+	public void setSendId(String sendId) {
+		if(sendId==null){
+			sendId="";
+		}
+		this.sendId = sendId;
+	}
 
 	//page
 	public void makePage(int totalCount){

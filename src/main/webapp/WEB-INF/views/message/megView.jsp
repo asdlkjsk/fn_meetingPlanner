@@ -113,6 +113,7 @@ span{
 			<c:import url="/WEB-INF/views/temp/megLeft.jsp"></c:import>
 			<form action="" id="frm" method="get">
 				<div id="msg_right" class="container">
+				<h2>${board }</h2>
 					<table class="table table-hover">
 						<tbody>
 							<tr>
@@ -127,10 +128,12 @@ span{
 						</tbody>
 					</table>
 					<div>
+					<c:if test="${board eq 'Read' }">
 						<input type="hidden" name="recvId" value="${meg.sendId }">
-						<input type="hidden" name="megNum" value="${meg.megNum }">
-						<input type="button" class="btn info" style="background-color: #44aaff;" id="btn1" value="답장">
+						<input type="button" class="btn info" style="background-color: #44aaff;" id="btn1" value="답장">					
+					</c:if>
 						<input type="button" class="btn danger" id="btn2" value="삭제">
+						<input type="hidden" name="megNum" value="${meg.megNum }">
 					</div>
 				</div>
 			</form>
