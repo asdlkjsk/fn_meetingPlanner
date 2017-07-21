@@ -21,12 +21,18 @@
 		});
 		
 		$("#btn1").click(function(){
-			var recvId = ${meg.sendId};
-			var mgCheck = ${meg.mgCheck};
-			<%-- $("#frm").attr("action", "<%=application.getContextPath() %>/message/MegWrite?recvId="+recvId+"&mgCheck=0");
-			frm.submit(); --%>
-			location.href= "./message/MegWrite?mgCheck=0&recvId="+recvId;
+			$("#frm").attr("action", "./MegWrite").submit();
 		});
+		
+		$("#btn2").click(function(){
+			if(confirm("삭제하시겠습니까?") == true){
+				$("#frm").attr("action", "./MegDelete?megNum=${meg.megNum}&recvId=${meg.recvId}").submit();	
+			} else{
+				return;
+			}
+			
+		});
+		
 	});
 </script>
 <style type="text/css">
@@ -105,7 +111,7 @@ span{
 	<section class="main_section">
 		<div id="message_rap">
 			<c:import url="/WEB-INF/views/temp/megLeft.jsp"></c:import>
-			<form action="" id="frm">
+			<form action="" id="frm" method="get">
 				<div id="msg_right" class="container">
 					<table class="table table-hover">
 						<tbody>
@@ -121,8 +127,10 @@ span{
 						</tbody>
 					</table>
 					<div>
-						<button class="btn info" style="background-color: #44aaff;" id="btn1">답장</button>
-						<button class="btn danger" id="btn2">삭제</button>
+						<input type="hidden" name="recvId" value="${meg.sendId }">
+						<input type="hidden" name="megNum" value="${meg.megNum }">
+						<input type="button" class="btn info" style="background-color: #44aaff;" id="btn1" value="답장">
+						<input type="button" class="btn danger" id="btn2" value="삭제">
 					</div>
 				</div>
 			</form>

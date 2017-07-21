@@ -33,6 +33,7 @@ public class MessageDAO {
 		System.out.println("mgcheck : "+MessageDTO.getMgCheck());
 		System.out.println("senddate : "+MessageDTO.getSendDate());*/
 		sqlSession.insert(namespace+"write1", MessageDTO);
+		MessageDTO = sqlSession.selectOne(namespace+"view2");
 		sqlSession.update(namespace+"update", MessageDTO);
 		return sqlSession.insert(namespace+"write2", MessageDTO);
 	}

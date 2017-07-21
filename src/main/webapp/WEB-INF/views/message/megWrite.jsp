@@ -101,16 +101,29 @@ span{
 				<form action="MegWrite" method="post">
 				<table class="table table-hover">
 					<tbody>
+					<c:if test="${member.id ne recvId }">
 						<tr>
-							<td >받는사람 : </td>
+							<td >받는사람1 : </td>
 							<td>
-								<input type="text" name="recvId">
+								<input type="text" name="recvId" style="width: 450px;" value="${param.recvId }">
 								<input type="hidden" name="sendId" value="${member.id }">
 								<input type="hidden" name="mgCheck" value="${param.mgCheck }">
 							</td>
-						</tr>						
+						</tr>
+						</c:if>
+						
+						<c:if test="${member.id eq recvId }">
 						<tr>
-							<td colspan="2"><textarea rows="5" cols="5" name="contents"></textarea> </td>
+							<td >받는사람2 : </td>
+							<td>
+							<input type="text" name="recvId" style="width: 450px;" value="${recvId }">
+								<input type="hidden" name="sendId" value="${member.id }">
+								<input type="hidden" name="mgCheck" value="${param.mgCheck }">
+							</td>
+						</tr>
+						</c:if>						
+						<tr>
+							<td colspan="2"><textarea rows="7" cols="10" name="contents" style="width: 500px;"></textarea> </td>
 						</tr>
 					</tbody>
 				</table>

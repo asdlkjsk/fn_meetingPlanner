@@ -1,5 +1,7 @@
 package com.fn.meeting;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +21,17 @@ public class SendMessageController {
 	private SendMessageService sendMessageService;	
 	
 	//list
-	//@RequestMapping(value="sendList", method=RequestMethod.GET)
-	public void sendList(ListInfo listInfo, Model model) throws Exception {
-		
+	@RequestMapping(value="sendList", method=RequestMethod.GET)
+	public String sendList(ListInfo listInfo, Model model) throws Exception {
+		List<SendMessageDTO> list = sendMessageService.sendList(listInfo);
+		model.addAttribute("list", list);
+		model.addAttribute("listInfo", listInfo);
+		model.addAttribute("board", "Read");
+		return "meg/megList";
 	}
 	
 	//view
-	//@RequestMapping(value="sendView", method=RequestMethod.GET)
+	@RequestMapping(value="sendView", method=RequestMethod.GET)
 	public void sendView(Integer megNum, Model model) throws Exception {
 		
 	}

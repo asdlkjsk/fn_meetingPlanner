@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="MessageMapper">
+  	<sql id="search">
+ 		<trim prefix="where" prefixOverrides="and || or">
+ 		<if test="search == ''">
+ 			sendId=#{recvId} and recvId like '%' || #{find} || '%'
+ 		</if>
+ 		<if test="search == 'sendId'">
+ 			sendId=#{recvId} and recvId like '%' || #{find} || '%'
+ 		</if>
+ 		<if test="search == 'contents'">
+ 			sendId=#{recvId} and contents like '%' || #{find} || '%'
+ 		</if>
+ 		</trim>
+ 	</sql>
+	
+	<select id="count" resultType="java.lang.Integer" parameterType="com.fn.util.ListInfo">
+		select count(nvl(megnum, 0)) from sendmessage 
+		<include refid="search"></include>	
+	</select>
+	
+ 	<select id="list" resultType="MessageDTO" parameterType="com.fn.util.ListInfo">
+ 		select * from 
+ 		(select rownum R, m.* from
+ 		(select * from sendmessage 
+ 		<include refid="search" ></include>
+ 		  order by megnum desc) m)
+ 		where R between #{startRow} and #{lastRow}
+ 	</select>
+ 	
+ 	<select id="view" resultType="MessageDTO" parameterType="java.lang.Integer">
+ 		select * from message where megnum = #{megNum}
+ 	</select>
+ 	
+<!--  	<insert id="write1" parameterType="MessageDTO">
+ 		insert into message
+ 		values (meg_seq.nextval, #{sendId}, #{contents}, #{recvId}, #{mgCheck}, sysdate)
+ 	</insert>
+	
+	<update id="update" parameterType="MessageDTO">
+		update message set MGCHECK = MGCHECK+1 where recvId= #{sendId}
+	</update>
+	
+	 <select id="view2" resultType="MessageDTO">
+ 		select * from message 
+		where megnum = (select max(megnum) from message)
+ 	</select>
+	
+	 <insert id="write2" parameterType="MessageDTO">
+ 		insert into sendmessage
+ 		values (#{megNum}, #{sendId}, #{contents}, #{sendDate}, #{recvId})
+ 	</insert> -->
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete sendmessage where megnum=#{megNum}
+	</delete> 	
+ </mapper> 
