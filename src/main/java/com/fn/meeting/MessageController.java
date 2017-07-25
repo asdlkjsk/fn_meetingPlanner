@@ -1,14 +1,11 @@
 package com.fn.meeting;
 
-<<<<<<< HEAD
-=======
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
->>>>>>> pjw0720
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,18 +27,14 @@ public class MessageController {
 	
 	
 	//list
-<<<<<<< HEAD
-	@RequestMapping(value="megList", method=RequestMethod.GET)
-	public void megList(ListInfo listInfo, Model model) throws Exception {
-=======
 	@RequestMapping(value="/ReadList", method=RequestMethod.GET)
 	public String megList(Model model, ListInfo listInfo) throws Exception {
 		List<MessageDTO> list = messageService.megList(listInfo);
 		model.addAttribute("list", list);
 		model.addAttribute("listInfo", listInfo);
 		model.addAttribute("board", "Read");
->>>>>>> pjw0720
 		
+		return "message/megList";
 	}
 	
 	//view

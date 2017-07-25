@@ -5,10 +5,8 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
+<c:import url="/WEB-INF/views/temp/1bootStrap.jsp"></c:import>
 <meta charset="utf-8">
-<<<<<<< HEAD
-=======
 <script type="text/javascript">
 	$(function() {
 		var allnum = "";
@@ -99,7 +97,6 @@
           }); 
 	});
 </script>
->>>>>>> pjw0720
 <style type="text/css">
 body {
 	height: 100%;
@@ -138,16 +135,6 @@ body {
 li {
 	text-align: center;
 	font-size: 20px;
-<<<<<<< HEAD
-	
-}
-
-table {
-	width: 100%;
-	height: 90%;
-}
-
-=======
 	height: 50px;
 	margin-top: 20px;
 }
@@ -196,7 +183,6 @@ span {
 form {
 	height: 90%;
 }
->>>>>>> pjw0720
 
 </style>
 
@@ -213,18 +199,11 @@ form {
 			<div id="msg_right" class="container">
 					<form action="" id="frm" name="frm2">
 				<div>
-<<<<<<< HEAD
-					<form action="${board}List" name="frm">
-						<input type="hidden" name="curPage"> <select name="search">
-							<option value="title">title</option>
-							<option value="writer">writer</option>
-=======
 					<c:if test="${member.id eq param.recvId }">
 						<input type="hidden" name="curPage"> 
 						<input type="hidden" name="recvId" value="${param.recvId}"> 
 						<select name="search">
 							<option value="sendId">sendId</option>
->>>>>>> pjw0720
 							<option value="contents">contents</option>
 						</select>
 						</c:if>
@@ -241,29 +220,6 @@ form {
 						<input type="submit" value="검색">
 					
 				</div>
-<<<<<<< HEAD
-				<table class="table">
-					<thead>
-						<tr>
-							<td>보낸사람</td>
-							<td>내용</td>
-							<td>날짜</td>
-						</tr>
-					</thead>
-
-					<tr>
-						<td>보</td>
-						<td>내</td>
-						<td>날</td>
-					</tr>
-					<c:forEach items="${message}" var="m">
-						<tr>
-							<td>{m.id}</td>
-							<td>{m.contents}</td>
-							<td>{m.reg_date}</td>
-						</tr>
-					</c:forEach>
-=======
 				
 				<table class="table table-hover">
 					<thead>
@@ -301,7 +257,6 @@ form {
 					</c:forEach>
 					</c:if>
 					</tbody>
->>>>>>> pjw0720
 				</table>
 
 				<div style="width: 100%; height: 50px; text-align: center;">
@@ -322,8 +277,6 @@ form {
 				</form>
 			</div>
 		</div>
-
-
 	</section>
 
 <c:import url="/WEB-INF/views/temp/footer.jsp"></c:import>

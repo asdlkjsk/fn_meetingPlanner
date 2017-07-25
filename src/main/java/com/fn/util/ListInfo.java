@@ -17,9 +17,9 @@ public class ListInfo {
 	private int startNum;
 	private int lastNum;
 	
+	//recvId
+	private String recvId;
 	
-<<<<<<< HEAD
-=======
 	public String getRecvId() {
 		if(recvId==null){
 			recvId="";
@@ -46,7 +46,6 @@ public class ListInfo {
 		this.sendId = sendId;
 	}
 
->>>>>>> pjw0720
 	//page
 	public void makePage(int totalCount){
 		//1. totalCount
@@ -135,6 +134,9 @@ public class ListInfo {
 		this.curPage = curPage;
 	}
 	public String getSearch() {
+		if(search==null){
+			search="";
+		}
 		return search;
 	}
 	public void setSearch(String search) {
@@ -144,6 +146,9 @@ public class ListInfo {
 		return find;
 	}
 	public void setFind(String find) {
+		if(find==null){
+			find="";
+		}
 		this.find = find;
 	}
 	

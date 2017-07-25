@@ -5,7 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
+<c:import url="/WEB-INF/views/temp/1bootStrap.jsp"></c:import>
 <meta charset="utf-8">
 <script type="text/javascript">
 	$(function() {
