@@ -18,6 +18,35 @@ public class ListInfo {
 	private int lastNum;
 	
 	
+<<<<<<< HEAD
+=======
+	public String getRecvId() {
+		if(recvId==null){
+			recvId="";
+		}
+		return recvId;
+	}
+
+	public void setRecvId(String recvId) {
+		this.recvId = recvId;
+	}
+
+	
+	//sendId
+	private String sendId;
+
+	public String getSendId() {
+		return sendId;
+	}
+
+	public void setSendId(String sendId) {
+		if(sendId==null){
+			sendId="";
+		}
+		this.sendId = sendId;
+	}
+
+>>>>>>> pjw0720
 	//page
 	public void makePage(int totalCount){
 		//1. totalCount

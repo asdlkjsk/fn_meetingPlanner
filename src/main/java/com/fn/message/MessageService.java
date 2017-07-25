@@ -20,16 +20,19 @@ public class MessageService {
 	
 	//view
 	public MessageDTO megView(int megNum) throws Exception {
-		return null;
+		return messageDAO.megView(megNum);
 	}
 	
 	//write
 	public int megWrite(MessageDTO MessageDTO) throws Exception {
-		return 0;
+		System.out.println("Service");
+				
+		return messageDAO.megWrite(MessageDTO);
 	}
 	
 	//delete
 	public int megDelete(int megNum) throws Exception {
-		return 0;
+		return messageDAO.megDelete(megNum);
 	}
+	
 }

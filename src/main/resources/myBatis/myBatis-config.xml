@@ -8,5 +8,14 @@
   			<typeAlias type="com.fn.member.MemberDTO" alias="MemberDTO" />
   			<typeAlias type="com.fn.member.client.ClientDTO" alias="ClientDTO" />
   			<typeAlias type="com.fn.member.manager.ManagerDTO" alias="ManagerDTO" />
+<<<<<<< HEAD
   		</typeAliases>
 	</configuration>
+=======
+  			<typeAlias type="com.fn.message.MessageDTO" alias="MessageDTO"/>
+  			<typeAlias type="com.fn.message.SendMessageDTO" alias="SendMessageDTO"/>
+  		</typeAliases>
+	</configuration>
+
+
+>>>>>>> pjw0720

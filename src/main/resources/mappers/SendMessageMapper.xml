@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="SendMessageMapper">
+  	<sql id="search">
+ 		<trim prefix="where" prefixOverrides="and || or">
+ 		<if test="search == ''">
+ 			sendId=#{sendId} and recvId like '%' || #{find} || '%'
+ 		</if>
+ 		<if test="search == 'sendId'">
+ 			sendId=#{sendId} and recvId like '%' || #{find} || '%'
+ 		</if>
+ 		<if test="search == 'contents'">
+ 			sendId=#{sendId} and contents like '%' || #{find} || '%'
+ 		</if>
+ 		</trim>
+ 	</sql>
+	
+	<select id="count" resultType="java.lang.Integer" parameterType="com.fn.util.ListInfo">
+		select count(nvl(megnum, 0)) from sendmessage 
+		<include refid="search"></include>	
+	</select>
+	
+ 	<select id="list" resultType="SendMessageDTO" parameterType="com.fn.util.ListInfo">
+ 		select * from 
+ 		(select rownum R, m.* from
+ 		(select * from sendmessage 
+ 		<include refid="search" ></include>
+ 		  order by megnum desc) m)
+ 		where R between #{startRow} and #{lastRow}
+ 	</select>
+ 	
+ 	<select id="view" resultType="SendMessageDTO" parameterType="java.lang.Integer">
+ 		select * from sendmessage where megnum = #{megNum}
+ 	</select>
+ 		
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete sendmessage where megnum=#{megNum}
+	</delete> 	
+		
+ </mapper> 
