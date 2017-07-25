@@ -1,6 +1,8 @@
 package com.fn.meeting;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -72,11 +74,33 @@ public class MessageController {
 	public String megDelete(Integer megNum, RedirectAttributes redirectAttributes, HttpSession session) throws Exception {
 		int result = messageService.megDelete(megNum);
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		/*System.out.println("getid : "+memberDTO.getId());*/
 		String message = "FAIL";
 		if(result>0){
 			message = "SUCCESS";			
 		}
+		redirectAttributes.addFlashAttribute("message", message);
+		return "redirect:ReadList?curPage=&find=&search=&recvId="+memberDTO.getId();
+	}
+	
+	//MegListDelete
+	@RequestMapping(value="ReadListDelete", method=RequestMethod.GET)
+	public String megListDelete(Integer[] chk, RedirectAttributes redirectAttributes, HttpSession session) throws Exception {
+		System.out.println("control");
+		/*System.out.println(board);*/
+		int result = 0;
+		for(int i =0;i<chk.length;i++){
+			/*System.out.println(chk[i]);*/
+			result = messageService.megDelete(chk[i]);
+		}
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		System.out.println("getid : "+memberDTO.getId());
+		String message = "FAIL";
+		if(result>0){
+			message = "SUCCESS";			
+		}
+	
+		
 		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:ReadList?curPage=&find=&search=&recvId="+memberDTO.getId();
 	}	

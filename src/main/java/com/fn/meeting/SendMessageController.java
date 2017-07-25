@@ -70,4 +70,28 @@ public class SendMessageController {
 		return "redirect:SendList?curPage=&find=&search=&sendId="+memberDTO.getId();
 	}
 	
+	//MegListDelete
+	@RequestMapping(value="SendListDelete", method=RequestMethod.GET)
+	public String megListDelete(Integer[] chk, RedirectAttributes redirectAttributes, HttpSession session) throws Exception {
+		System.out.println("control");
+		/*System.out.println(board);*/
+		int result = 0;
+		for(int i =0;i<chk.length;i++){
+			/*System.out.println(chk[i]);*/
+			result = sendMessageService.sendDelete(chk[i]);
+		}
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		System.out.println("getid : "+memberDTO.getId());
+		String message = "FAIL";
+		if(result>0){
+			message = "SUCCESS";			
+		}
+
+		/*System.out.println(path);*/
+		
+		redirectAttributes.addFlashAttribute("message", message);
+		return "redirect:SendList?curPage=&find=&search=&sendId="+memberDTO.getId();
+	}	
+	
 }

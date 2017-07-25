@@ -17,7 +17,6 @@
 					<li><a href="<%=application.getContextPath() %>/message/MegWrite?recvId=&mgCheck=1"style="text-decoration: none !important;">쪽지보내기</a></li>
 					<li><a href="<%=application.getContextPath() %>/message/ReadList?curPage=1&find=&search=sendId&recvId=${member.id}&board=Read" style="text-decoration: none !important;">받은쪽지함</a></li>
 					<li><a href="<%=application.getContextPath() %>/message/SendList?curPage=1&find=&search=sendId&sendId=${member.id}&board=Send" style="text-decoration: none !important;">보낸쪽지함</a></li>
-					<li><a href="#" style="text-decoration: none;">휴지통</a></li>
 				</ul>
 			</div>
 

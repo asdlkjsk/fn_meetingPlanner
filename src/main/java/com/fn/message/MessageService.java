@@ -37,4 +37,5 @@ public class MessageService {
 	public int megDelete(int megNum) throws Exception {
 		return messageDAO.megDelete(megNum);
 	}
+	
 }

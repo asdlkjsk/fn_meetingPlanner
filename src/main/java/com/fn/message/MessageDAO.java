@@ -42,15 +42,7 @@ public class MessageDAO {
 	public int megDelete(int megNum) throws Exception {
 		return sqlSession.delete(namespace+"delete", megNum);
 	}
-	
-	//listDelete
-	public int megListDelete(int megNum ) throws Exception {
 		
-		sqlSession.delete(namespace+"delete", megNum);
-		
-		return 1;
-	}
-	
 	//view
 	public MessageDTO megView(int megNum) throws Exception {
 		return sqlSession.selectOne(namespace+"view", megNum);

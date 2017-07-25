@@ -57,5 +57,5 @@
 	
 	<delete id="delete" parameterType="java.lang.Integer">
 		delete message where megnum=#{megNum}
-	</delete> 	
+	</delete> 		
  </mapper> 

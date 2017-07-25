@@ -35,27 +35,9 @@
  	<select id="view" resultType="SendMessageDTO" parameterType="java.lang.Integer">
  		select * from sendmessage where megnum = #{megNum}
  	</select>
- 	
-<!--  	<insert id="write1" parameterType="MessageDTO">
- 		insert into message
- 		values (meg_seq.nextval, #{sendId}, #{contents}, #{recvId}, #{mgCheck}, sysdate)
- 	</insert>
-	
-	<update id="update" parameterType="MessageDTO">
-		update message set MGCHECK = MGCHECK+1 where recvId= #{sendId}
-	</update>
-	
-	 <select id="view2" resultType="MessageDTO">
- 		select * from message 
-		where megnum = (select max(megnum) from message)
- 	</select>
-	
-	 <insert id="write2" parameterType="MessageDTO">
- 		insert into sendmessage
- 		values (#{megNum}, #{sendId}, #{contents}, #{sendDate}, #{recvId})
- 	</insert> -->
-	
+ 		
 	<delete id="delete" parameterType="java.lang.Integer">
 		delete sendmessage where megnum=#{megNum}
 	</delete> 	
+		
  </mapper> 
