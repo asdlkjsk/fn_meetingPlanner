@@ -22,7 +22,7 @@ public class ClientController {
 	@Autowired 
 	private ClientServiceImpl clientServiceImpl;
 	
-	@RequestMapping("memberJoin")
+	@RequestMapping(value="memberJoin", method=RequestMethod.POST)
 	public void memberJoin(){}
 	
 	@RequestMapping("memberLogin")
@@ -34,8 +34,17 @@ public class ClientController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="myPage")
+	public void myPage(){}
+	
 	@RequestMapping("memberAgree")
 	public void memberAgree(){}
+	
+	@RequestMapping("groupList")
+	public void groupList(){}
+	
+	
+	/*******************************************************************/
 	
 	@RequestMapping(value="/clientJoin", method=RequestMethod.POST)
 	public String joinClient(ClientDTO clientDTO, Model model, HttpSession session) throws Exception {

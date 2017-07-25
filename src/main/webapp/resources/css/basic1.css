@@ -79,39 +79,6 @@ header {
 	top:1px;
 	text-decoration: none;
 }
-
-/* ==== */
-.login_dropdown{
-		height: 23px;
-		overflow: hidden;
-	}
-.dropdown_box {
-		display: none;
-		position: absolute;
-		background-color: #f9f9f9;
-		min-width: 130px;
-		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-		z-index: 1;
-}
-
-.dropdown_box a {
-		float: none;
-		color: black;
-		padding: 12px 16px;
-		text-decoration: none;
-		display: block;
-		text-align: left;
-}
-.login_dropdown:hover .dropdown_box {
-    display: block;
-}
-
-
-.dropdown_box a:hover {
-	color: white;
-	background: #44aaff;
-}
-
 /********** footer **********/
 
 footer {

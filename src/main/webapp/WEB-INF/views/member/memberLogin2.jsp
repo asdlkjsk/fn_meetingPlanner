@@ -104,12 +104,11 @@
 					<h2 style="font-weight: bold;">LOGIN</h2>
 				</div>
 				<div class="inpu">
-     				<input type="text" class="form-control" id="id" name="id" placeholder="아이디" style="width: 100%; height: 50px;" value="${member.id }">
+     				<input type="text" class="form-control" id="id" name="id" placeholder="아이디" style="width: 100%; height: 50px;">
    				</div>
 				<div class="inpu">
 					<input type="password" class="form-control" id="pw" name="pw" type="password" placeholder="비밀번호" style="width: 100%; height: 50px;">
 				</div>
-				
 				<div class="radio icheck-peterriver" style="margin-top: 50px !important;">
 					<input type="radio" id="peterriver1" name="grade" class="lg" value="client" checked="checked"/>
 					<label for="peterriver1">일반회원</label>
@@ -120,7 +119,7 @@
 				</div>				
 				<div id="btn" role="button">
 					<p>로 그 인<p>
-				</div>				
+				</div>
 			</form>
 			<br>
 			</div>
@@ -128,19 +127,7 @@
 				<a href="memberAgree">회원가입　</a>│
 				<a href="">　아이디 찾기　</a>│
 				<a href="">　비밀번호 찾기</a>
-			</div>
-			<div>
-				<form id="frm_ka" action="kakaoLogin" method="get">
-					<button class="btn">카카오로그인</button>
-				</form>
-			</div>
+			</div>		
 	</section>
 </body>
-<script type="text/javascript">
-	$(function() {
-		$(".btn").click(function() {
-			$("#frm_ka").submit();
-		});
-	});
-</script>
 </html>

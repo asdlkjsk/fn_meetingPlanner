@@ -18,7 +18,17 @@
 					<a href="<%=application.getContextPath() %>/message/megList">쪽지</a>
 				</c:if>
 				<c:if test="${member ne null }">
-				<a href="<%=application.getContextPath() %>/member/memberLogout" class="log_btn" role="button">로그아웃</a>
+					<%-- <a href="<%=application.getContextPath() %>/member/memberLogout" class="log_btn" role="button">로그아웃</a> --%>
+					<div class="login_dropdown">
+					<span style="cursor: pointer; font-weight: bold; font-size: 20px;">${member.id }님</span>
+						<div class="dropdown_box">
+							<a href="<%=application.getContextPath() %>/member/myPage" >마이페이지</a>
+							<a href="<%=application.getContextPath() %>/member/groupList" >모임목록</a>
+							<a href="<%=application.getContextPath() %>/message/ReadList?curPage=1&find=&search=sendId&recvId=${member.id}&board=Read">쪽지</a>
+							<a href="<%=application.getContextPath() %>/member/memberLogout" >로그아웃</a>
+						</div>
+					</div>
 				</c:if>
 			</div>
+		</div>
 	</header>
