@@ -95,6 +95,7 @@
          		}
              });
           }); 
+               
 	});
 </script>
 <style type="text/css">
@@ -238,22 +239,42 @@ form {
 					<tbody>
 					<c:if test="${member.id eq param.recvId }">
 					<c:forEach items="${list}" var="m" varStatus="i">
+					<c:if test="${m.rcheck eq 1}">
 						<tr>
-							<td class="list_td" style="border-top: none;"><input type="checkbox" id="tn${i.index+1 }" name="chk" class="chk" value="${m.megNum}"></td>
-							<td class="list_td" style="border-top: none;">${m.sendId} </td>
-							<td class="list_td" style="border-top: none; display:inline-block; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; width:400px; overflow:hidden;"><a href="${board}View?megNum=${m.megNum}">${m.contents}</a></td>
-							<td class="list_td" style="border-top: none;">${m.sendDate}</td>
+							<td class="list_td" style="border-top: none; color: blue;"><input type="checkbox" id="tn${i.index+1 }" name="chk" class="chk" value="${m.megNum}"></td>
+							<td class="list_td" style="border-top: none; color: blue;">${m.sendId} </td>
+							<td class="list_td" style="border-top: none; color: blue; display:inline-block; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; width:400px; overflow:hidden;"><a style="color: blue;" href="${board}View?megNum=${m.megNum}">${m.contents}</a></td>
+							<td class="list_td" style="border-top: none; color: blue;">${m.sendDate}</td>
 						</tr>
+					</c:if>
+					<c:if test="${m.rcheck eq 0}">
+						<tr>
+							<td class="list_td" style="border-top: none; font-style: italic;"><input type="checkbox" id="tn${i.index+1 }" name="chk" class="chk" value="${m.megNum}"></td>
+							<td class="list_td" style="border-top: none; font-style: italic;">${m.sendId} </td>
+							<td class="list_td" style="border-top: none; font-style: italic; display:inline-block; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; width:400px; overflow:hidden;"><a style="color: blue;" href="${board}View?megNum=${m.megNum}">${m.contents}</a></td>
+							<td class="list_td" style="border-top: none; font-style: italic;">${m.sendDate}</td>
+						</tr>
+					</c:if>
 					</c:forEach>
 					</c:if>
 					<c:if test="${member.id eq param.sendId }">
 					<c:forEach items="${list}" var="m" varStatus="i">
+					<c:if test="${m.rcheck eq 1}">
 						<tr>
-							<td class="list_td" style="border-top: none;"><input type="checkbox" id="tn${i.index+1 }" name="chk" class="chk" value="${m.megNum}"></td>
-							<td class="list_td" style="border-top: none;">${m.recvId}</td>
-							<td class="list_td" style="border-top: none; display:inline-block; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; width:400px; overflow:hidden;"><a href="${board}View?megNum=${m.megNum}">${m.contents}</a></td>
-							<td class="list_td" style="border-top: none;">${m.sendDate}</td>
+							<td class="list_td" style="border-top: none; color: blue;"><input type="checkbox" id="tn${i.index+1 }" name="chk" class="chk" value="${m.megNum}"></td>
+							<td class="list_td" style="border-top: none; color: blue;">${m.recvId}</td>
+							<td class="list_td" style="border-top: none; display:inline-block; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; width:400px; overflow:hidden;"><a style="color: blue;" href="${board}View?megNum=${m.megNum}">${m.contents}</a></td>
+							<td class="list_td" style="border-top: none; color: blue;">${m.sendDate} <input type="hidden" value="${m.rcheck }"> </td>
 						</tr>
+					</c:if>
+					<c:if test="${m.rcheck eq 0 }">
+						<tr>
+							<td class="list_td" style="border-top: none; font-style: italic;"><input type="checkbox" id="tn${i.index+1 }" name="chk" class="chk" value="${m.megNum}"></td>
+							<td class="list_td" style="border-top: none; font-style: italic;">${m.recvId}</td>
+							<td class="list_td" style="border-top: none; font-style: italic; display:inline-block; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; width:400px; overflow:hidden;"><a style="color:gray;" href="${board}View?megNum=${m.megNum}">${m.contents}</a></td>
+							<td class="list_td" style="border-top: none; font-style: italic;">${m.sendDate}<input type="hidden" value="${m.rcheck }"> </td>
+						</tr>
+					</c:if>
 					</c:forEach>
 					</c:if>
 					</tbody>

@@ -84,21 +84,20 @@ span{
 				<form action="MegWrite" method="post">
 				<table class="table table-hover">
 					<tbody>
-					<c:if test="${member.id ne recvId }">
 						<tr>
 							<td >받는사람 :
 								<input type="text" name="recvId" style="width: 450px;" value="${param.recvId }">
 								<input type="hidden" name="sendId" value="${member.id }">
-								<input type="hidden" name="mgCheck" value="${param.mgCheck }">
+								
 							</td>
-						</tr>
-						</c:if>					
+						</tr>				
 						<tr>
 							<td><textarea rows="7" cols="10" name="contents" style="width: 500px;"></textarea> </td>
 						</tr>
 					</tbody>
 				</table>
 				<div>
+					<input type="hidden" name="mgCheck" value="${param.mgCheck}">
 					<input type="submit" class="btn info" value="보내기">
 				</div>
 			</form>

@@ -74,6 +74,7 @@ public class ClientController {
 		
 		mv.addObject("path", path);
 		mv.addObject("message", message);
+		/*mv.addObject("mgCheck", mgCheck);*/
 		mv.setViewName("commons/result");
 		
 		return mv;

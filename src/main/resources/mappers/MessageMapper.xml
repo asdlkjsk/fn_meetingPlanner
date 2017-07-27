@@ -45,6 +45,14 @@
 		update message set MGCHECK = MGCHECK+1 where recvId= #{sendId}
 	</update>
 	
+	<update id="mgUpdate" parameterType="MessageDTO">
+		update message set MGCHECK = MGCHECK-1 where recvId= #{sendId}
+	</update>
+	
+	<update id="mgUpdate2" parameterType="MessageDTO">
+		update message set rCHECK = 0 where megnum= #{megNum}
+	</update>
+	
 	 <select id="view2" resultType="MessageDTO">
  		select * from message 
 		where megnum = (select max(megnum) from message)

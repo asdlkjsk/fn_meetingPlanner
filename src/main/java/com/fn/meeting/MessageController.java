@@ -1,8 +1,6 @@
 package com.fn.meeting;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,16 +47,24 @@ public class MessageController {
 	
 	//writeForm
 	@RequestMapping(value="MegWrite", method=RequestMethod.GET)
-	public String megWrite(Model model, String recvId) throws Exception {
+	public String megWrite(Model model, MessageDTO messageDTO) throws Exception {
+		System.out.println(messageDTO.getMgCheck());
+		System.out.println(messageDTO.getRecvId());
 		model.addAttribute("path", "Read");
-		model.addAttribute("recvId", recvId);
+		model.addAttribute("meg", messageDTO);
 		return "message/megWrite";
 	}
 	
 	//write
 	@RequestMapping(value="MegWrite", method=RequestMethod.POST)
 	public String megWrite(MessageDTO MessageDTO, RedirectAttributes redirectAttributes) throws Exception {
-		System.out.println("Controller");
+/*		System.out.println("Controller");
+		System.out.println("recvid : "+MessageDTO.getRecvId());
+		System.out.println("sendid : "+MessageDTO.getSendId());
+		System.out.println("megnum : "+MessageDTO.getMegNum());
+		System.out.println("contents : "+MessageDTO.getContents());
+		System.out.println("mgcheck : "+MessageDTO.getMgCheck());
+		System.out.println("senddate : "+MessageDTO.getSendDate());*/
 		int result = messageService.megWrite(MessageDTO);
 		String message = "FAIL";
 		if(result>0){

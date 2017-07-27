@@ -28,7 +28,7 @@ public class MessageService {
 	
 	//write
 	public int megWrite(MessageDTO MessageDTO) throws Exception {
-		System.out.println("Service");
+		/*System.out.println("Service");*/
 				
 		return messageDAO.megWrite(MessageDTO);
 	}

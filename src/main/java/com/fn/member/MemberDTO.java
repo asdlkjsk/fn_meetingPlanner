@@ -13,7 +13,15 @@ public class MemberDTO {
 	private String phone;
 	private String grade;
 	private MultipartFile f1;
+	//mgCheck가 필요해서 추가해봄(07.26)
+	private int mgCheck;
 
+	public int getMgCheck() {
+		return mgCheck;
+	}
+	public void setMgCheck(int mgCheck) {
+		this.mgCheck = mgCheck;
+	}
 	public MultipartFile getF1() {
 		return f1;
 	}

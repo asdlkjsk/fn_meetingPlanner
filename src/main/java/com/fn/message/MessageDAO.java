@@ -19,21 +19,28 @@ public class MessageDAO {
 	
 	//insert
 	public int megWrite(MessageDTO MessageDTO) throws Exception {
-		/*System.out.println("DAO");
+/*		System.out.println("DAO");
 		
 		int result1 = sqlSession.insert(namespace+"write1", MessageDTO);
 		System.out.println("result1 : "+result1);
 		int result2 = sqlSession.update(namespace+"update", MessageDTO);
 		System.out.println("result2 : "+result2);
-		MessageDTO = sqlSession.selectOne(namespace+"view2");
-		System.out.println("recvid : "+MessageDTO.getRecvId());
+		MessageDTO = sqlSession.selectOne(namespace+"view2");*/
+/*		System.out.println("recvid : "+MessageDTO.getRecvId());
 		System.out.println("sendid : "+MessageDTO.getSendId());
 		System.out.println("megnum : "+MessageDTO.getMegNum());
 		System.out.println("contents : "+MessageDTO.getContents());
 		System.out.println("mgcheck : "+MessageDTO.getMgCheck());
 		System.out.println("senddate : "+MessageDTO.getSendDate());*/
+		
 		sqlSession.insert(namespace+"write1", MessageDTO);
 		MessageDTO = sqlSession.selectOne(namespace+"view2");
+/*		System.out.println("recvid : "+MessageDTO.getRecvId());
+		System.out.println("sendid : "+MessageDTO.getSendId());
+		System.out.println("megnum : "+MessageDTO.getMegNum());
+		System.out.println("contents : "+MessageDTO.getContents());
+		System.out.println("mgcheck : "+MessageDTO.getMgCheck());
+		System.out.println("senddate : "+MessageDTO.getSendDate());*/
 		sqlSession.update(namespace+"update", MessageDTO);
 		return sqlSession.insert(namespace+"write2", MessageDTO);
 	}
@@ -45,12 +52,18 @@ public class MessageDAO {
 		
 	//view
 	public MessageDTO megView(int megNum) throws Exception {
-		return sqlSession.selectOne(namespace+"view", megNum);
+		MessageDTO messageDTO = sqlSession.selectOne(namespace+"view", megNum);
+		sqlSession.update(namespace+"mgUpdate", messageDTO);
+		int result = sqlSession.update(namespace+"mgUpdate2", messageDTO);
+		System.out.println(result);
+		return messageDTO;
 	}
 	
 	//list
 	public List<MessageDTO> megList(ListInfo listInfo) throws Exception {
-		return sqlSession.selectList(namespace+"list", listInfo);
+		List<MessageDTO> ar = sqlSession.selectList(namespace+"list", listInfo);
+		System.out.println(ar.get(0).getRcheck());
+		return ar;
 	}
 	
 	//getCount

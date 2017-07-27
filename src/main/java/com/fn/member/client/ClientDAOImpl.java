@@ -22,7 +22,11 @@ public class ClientDAOImpl implements MemberDAO{
 
 	@Override
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
-		return sqlSession.selectOne(namespace+"clientLogin", memberDTO);
+		memberDTO = sqlSession.selectOne(namespace+"clientLogin", memberDTO);
+		int result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
+		memberDTO.setMgCheck(result);
+		/*System.out.println(result);*/
+		return memberDTO;
 	}
 
 	@Override
