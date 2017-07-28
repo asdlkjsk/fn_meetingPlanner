@@ -60,7 +60,7 @@ public class ClientController {
 	}
 	
 	
-	@RequestMapping(value = "/clientLogin", method=RequestMethod.POST)
+	@RequestMapping(value = "/clientLogin", method={RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView loginClient(MemberDTO memberDTO, ModelAndView mv , HttpSession session) throws Exception {
 		memberDTO = clientServiceImpl.memberLogin(memberDTO);
 		String path = "./memberLogin";

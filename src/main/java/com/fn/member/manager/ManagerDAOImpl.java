@@ -21,7 +21,10 @@ public class ManagerDAOImpl implements MemberDAO{
 	
 	@Override
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
-		return sqlSession.selectOne(namespace+"managerLogin", memberDTO);
+		memberDTO = sqlSession.selectOne(namespace+"managerLogin", memberDTO);
+		int result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
+		memberDTO.setMgCheck(result);
+		return memberDTO;
 	}
 
 	@Override

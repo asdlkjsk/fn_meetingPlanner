@@ -52,17 +52,18 @@ public class MessageDAO {
 		
 	//view
 	public MessageDTO megView(int megNum) throws Exception {
-		MessageDTO messageDTO = sqlSession.selectOne(namespace+"view", megNum);
-		sqlSession.update(namespace+"mgUpdate", messageDTO);
-		int result = sqlSession.update(namespace+"mgUpdate2", messageDTO);
-		System.out.println(result);
+		MessageDTO messageDTO = sqlSession.selectOne(namespace + "view", megNum);
+		if (messageDTO.getRcheck() == 1) {
+			sqlSession.update(namespace + "mgUpdate", messageDTO);
+			sqlSession.update(namespace + "mgUpdate2", messageDTO);
+		}
 		return messageDTO;
 	}
 	
 	//list
 	public List<MessageDTO> megList(ListInfo listInfo) throws Exception {
 		List<MessageDTO> ar = sqlSession.selectList(namespace+"list", listInfo);
-		System.out.println(ar.get(0).getRcheck());
+		/*System.out.println(ar.get(0).getRcheck());*/
 		return ar;
 	}
 	

@@ -23,6 +23,7 @@ public class ClientDAOImpl implements MemberDAO{
 	@Override
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
 		memberDTO = sqlSession.selectOne(namespace+"clientLogin", memberDTO);
+		System.out.println(memberDTO.getId());
 		int result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
 		memberDTO.setMgCheck(result);
 		/*System.out.println(result);*/
