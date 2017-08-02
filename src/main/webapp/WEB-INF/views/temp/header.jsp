@@ -21,9 +21,12 @@
 				<c:if test="${member ne null }">
 					<%-- <a href="<%=application.getContextPath() %>/member/memberLogout" class="log_btn" role="button">로그아웃</a> --%>
 					<div class="login_dropdown">
-					<span style="cursor: pointer; font-weight: bold; font-size: 20px;">${member.id }님</span>
+						<span style="cursor: pointer; font-weight: bold; font-size: 20px;">${member.id }님</span>
 						<div class="dropdown_box">
 							<a href="<%=application.getContextPath() %>/member/myPage" >마이페이지</a>
+							<c:if test="${member.grade eq 'manager'}">
+								<a href="javascript:;" onclick="window.open('<%=application.getContextPath() %>/companyJoin', 'company', 'width=320, height=807');" >업체예약등록</a>
+							</c:if>
 							<a href="<%=application.getContextPath() %>/member/groupList" >모임목록</a>
 							<a href="<%=application.getContextPath() %>/message/ReadList?curPage=1&find=&search=sendId&recvId=${member.id}&board=Read">쪽지 ${member.mgCheck }</a>
 							<a href="<%=application.getContextPath() %>/member/memberLogout" >로그아웃</a>

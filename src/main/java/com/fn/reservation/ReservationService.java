@@ -10,20 +10,18 @@ import com.fn.util.ListInfo;
 
 @Service
 public class ReservationService {
-		@Inject
-		private ReservationDAO reservationDAO;
 	
-	public int reservationWrite(ReservationDTO reservationDTO){
-		
-		return 0;
+	@Inject
+	private ReservationDAO reservationDAO;
+	
+	public int reservationWrite(ReservationDTO reservationDTO){	
+		return reservationDAO.reservationWrite(reservationDTO);
 	}
 	public List<ReservationDTO> reservationList(ListInfo listInfo){
 		return null;
-		
 	}
 	
 	public int reservationDelete(String id){
-		
 		return 0;
 	}
 }

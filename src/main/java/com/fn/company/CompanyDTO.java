@@ -1,19 +1,40 @@
 package com.fn.company;
 
 public class CompanyDTO {
-
+	
 	private String cName;
+	private String rName;
+	private String cPlace;
 	private String cPhone;
-	private String cplace;
 	private String cNum;
-	private String cKind;
-	private String oTime;
-	private String price;
+	private String sTime;
+	private String eTime;
+	private String notice;
+	private String addInfo;
+	private int revInterval;
+	private int revMin;
+	private int revMax;
+	private int peopleNum;
+	private int period;
+	private String fileName;
+	
 	public String getcName() {
 		return cName;
 	}
 	public void setcName(String cName) {
 		this.cName = cName;
+	}
+	public String getrName() {
+		return rName;
+	}
+	public void setrName(String rName) {
+		this.rName = rName;
+	}
+	public String getcPlace() {
+		return cPlace;
+	}
+	public void setcPlace(String cPlace) {
+		this.cPlace = cPlace;
 	}
 	public String getcPhone() {
 		return cPhone;
@@ -21,36 +42,70 @@ public class CompanyDTO {
 	public void setcPhone(String cPhone) {
 		this.cPhone = cPhone;
 	}
-	public String getCplace() {
-		return cplace;
-	}
-	public void setCplace(String cplace) {
-		this.cplace = cplace;
-	}
 	public String getcNum() {
 		return cNum;
 	}
 	public void setcNum(String cNum) {
 		this.cNum = cNum;
 	}
-	public String getcKind() {
-		return cKind;
+	public String getsTime() {
+		return sTime;
 	}
-	public void setcKind(String cKind) {
-		this.cKind = cKind;
+	public void setsTime(String sTime) {
+		this.sTime = sTime;
 	}
-	public String getoTime() {
-		return oTime;
+	public String geteTime() {
+		return eTime;
 	}
-	public void setoTime(String oTime) {
-		this.oTime = oTime;
+	public void seteTime(String eTime) {
+		this.eTime = eTime;
 	}
-	public String getPrice() {
-		return price;
+	public String getNotice() {
+		return notice;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setNotice(String notice) {
+		this.notice = notice;
 	}
-	
-	
+	public String getAddInfo() {
+		return addInfo;
+	}
+	public void setAddInfo(String addInfo) {
+		this.addInfo = addInfo;
+	}
+	public int getRevInterval() {
+		return revInterval;
+	}
+	public void setRevInterval(int revInterval) {
+		this.revInterval = revInterval;
+	}
+	public int getRevMin() {
+		return revMin;
+	}
+	public void setRevMin(int revMin) {
+		this.revMin = revMin;
+	}
+	public int getRevMax() {
+		return revMax;
+	}
+	public void setRevMax(int revMax) {
+		this.revMax = revMax;
+	}
+	public int getPeopleNum() {
+		return peopleNum;
+	}
+	public void setPeopleNum(int peopleNum) {
+		this.peopleNum = peopleNum;
+	}
+	public int getPeriod() {
+		return period;
+	}
+	public void setPeriod(int period) {
+		this.period = period;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 }

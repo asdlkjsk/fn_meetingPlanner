@@ -27,5 +27,7 @@ public interface MemberDAO {
 	//list
 	public List<MemberDTO> memberList(ListInfo listInfo) throws Exception;
 	
+	//idCheck
+	public int idCheck(MemberDTO memberDTO) throws Exception;
 	
 }

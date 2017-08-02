@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="ReservationMapper">	
+	<insert id="write" statementType="CALLABLE" parameterType="java.util.Map">
+		{ call rev_write(#{revDTO.cName, mode=IN}, #{revDTO.id, mode=IN}, #{revDTO.revName, mode=IN},
+		#{revDTO.revTerm, mode=IN}, #{revDTO.reqTerm, mode=IN}, #{revDTO.revPeople, mode=IN},
+		#{revDTO.phone, mode=IN}, #{revDTO.email, mode=IN}, #{revDTO.revDate, mode=IN},
+		#{result, mode=OUT, javaType=int, jdbcType=INTEGER}) }
+	</insert>
+  </mapper>

@@ -13,6 +13,22 @@ public class MemberDTO {
 	private String phone;
 	private String grade;
 	private MultipartFile f1;
+	private String fileName;
+	private String oriName;
+	
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getOriName() {
+		return oriName;
+	}
+	public void setOriName(String oriName) {
+		this.oriName = oriName;
+	}
 	//mgCheck가 필요해서 추가해봄(07.26)
 	private int mgCheck;
 

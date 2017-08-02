@@ -19,8 +19,10 @@ public class ClientServiceImpl implements MemberService{
 	private ClientDAOImpl clientDAOImpl;
 	private FileSaver filesaver;
 	
-	public MemberDTO memberReload(MemberDTO memberDTO) throws Exception {
-		return clientDAOImpl.memberReload(memberDTO);
+	public MemberDTO kakaoLogin(MemberDTO memberDTO) throws Exception {
+		
+		memberDTO = clientDAOImpl.kakaoLogin(memberDTO);
+		return memberDTO;
 	}
 	
 	@Override
@@ -30,7 +32,6 @@ public class ClientServiceImpl implements MemberService{
 
 	@Override
 	public int memberJoin(MemberDTO memberDTO, HttpSession session) throws Exception {
-				
 		return clientDAOImpl.memberJoin(memberDTO);
 	}
 
@@ -56,6 +57,11 @@ public class ClientServiceImpl implements MemberService{
 	public List<MemberDTO> memberList(ListInfo listInfo) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public int idCheck(MemberDTO memberDTO) throws Exception {
+		return clientDAOImpl.idCheck(memberDTO);
 	}
 	
 }

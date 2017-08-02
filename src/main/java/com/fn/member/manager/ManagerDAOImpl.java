@@ -21,10 +21,7 @@ public class ManagerDAOImpl implements MemberDAO{
 	
 	@Override
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
-		memberDTO = sqlSession.selectOne(namespace+"managerLogin", memberDTO);
-		int result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
-		memberDTO.setMgCheck(result);
-		return memberDTO;
+		return sqlSession.selectOne(namespace+"managerLogin", memberDTO);
 	}
 
 	@Override
@@ -57,5 +54,10 @@ public class ManagerDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+	@Override
+	public int idCheck(MemberDTO memberDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -6,7 +6,7 @@
  <mapper namespace="MemberMapper">
   	
   	<insert id="Join" parameterType="MemberDTO">
-  		insert into member values(#{id}, #{pw}, #{name}, #{age}, #{gender}, #{email}, #{phone}, #{grade})
+  		insert into member values(#{id}, #{pw}, #{name}, #{age}, #{gender}, #{email}, #{phone}, #{grade}, #{fileName}, #{oriName})
   	</insert>
   	
   	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
@@ -17,4 +17,9 @@
  		select DISTINCT mgCheck from message 
 		where recvId=#{id}
  	</select>
+ 	
+ 	<select id="idCheck" parameterType="MemberDTO" resultType="MemberDTO">
+ 		select id from member where id=#{id}
+ 	</select>
+ 	
  </mapper>

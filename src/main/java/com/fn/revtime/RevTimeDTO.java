@@ -1,33 +1,21 @@
 package com.fn.revtime;
 
-import java.sql.Date;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class RevTimeDTO {
 
-	
-	
-	private int num;
 	private String cName;
-	private String rsTime;
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date rsDate;
 	private int revPeople;
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
-	}
+	
 	public String getcName() {
 		return cName;
 	}
 	public void setcName(String cName) {
 		this.cName = cName;
-	}
-	public String getRsTime() {
-		return rsTime;
-	}
-	public void setRsTime(String rsTime) {
-		this.rsTime = rsTime;
 	}
 	public Date getRsDate() {
 		return rsDate;
@@ -41,6 +29,4 @@ public class RevTimeDTO {
 	public void setRevPeople(int revPeople) {
 		this.revPeople = revPeople;
 	}
-	
-	
 }

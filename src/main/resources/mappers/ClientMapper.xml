@@ -10,6 +10,12 @@
 	</select>
 	
 	<insert id="clientJoin" parameterType="ClientDTO">
-		insert into client values(#{id})
+		insert into client values(#{id}, #{kakaoimg})
 	</insert>
+	
+	<select id="kakaoLogin" parameterType="MemberDTO" resultType="ClientDTO">
+		select m.*, c.* from member m, client c 
+		where m.id=#{id} and m.id=c.cid
+	</select>
+	
 </mapper>

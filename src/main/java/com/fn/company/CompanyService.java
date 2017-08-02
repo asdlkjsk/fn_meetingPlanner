@@ -10,9 +10,11 @@ public class CompanyService {
 	@Inject
 	private CompanyDAO companyDAO;
 	
-	public int companyWrite(CompanyDTO companyDTO) throws Exception{
-		
-		return 0;
+	public int companyWrite(CompanyDTO companyDTO){
+		return companyDAO.companyWrite(companyDTO);
 	}
 	
+	public CompanyDTO companyView(CompanyDTO companyDTO){
+		return companyDAO.companyView(companyDTO);
+	}
 }

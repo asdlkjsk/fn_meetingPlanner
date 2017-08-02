@@ -20,22 +20,15 @@ public class ClientDAOImpl implements MemberDAO{
 	private final String namespace="ClientMapper.";
 	private final String namespace2="MemberMapper.";
 
-	public MemberDTO memberReload(MemberDTO memberDTO) throws Exception {
-		System.out.println("dao getId : "+memberDTO.getId());
-		int result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
-		memberDTO.setMgCheck(result);
-		System.out.println("mgcheck dao : "+result);
+	public MemberDTO kakaoLogin(MemberDTO memberDTO) throws Exception {		
+		memberDTO = sqlSession.selectOne(namespace+"kakaoLogin", memberDTO);				
 		return memberDTO;
 	}
 	
 	@Override
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
-		memberDTO = sqlSession.selectOne(namespace+"clientLogin", memberDTO);
-		System.out.println("clientLogin DAO : "+memberDTO.getId());
-		int result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
-		memberDTO.setMgCheck(result);
-		/*System.out.println(result);*/
-		return memberDTO;
+		return sqlSession.selectOne(namespace+"clientLogin", memberDTO);
+		
 	}
 
 	@Override
@@ -68,5 +61,12 @@ public class ClientDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int idCheck(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(namespace2+"idCheck", memberDTO);
+	}
+	
+	
 	
 }

@@ -430,8 +430,9 @@ to {
 		<div class="main_search">
 			<button id="create_btn" onclick="meetingCreate()">CREATE</button>
 		</div>
+		<a href="reservation">Reservation</a>
 	</section>
-
+	
 	<c:import url="/WEB-INF/views/temp/footer.jsp" />
 	<script type="text/javascript">
 		/* var slideIndex = 0;

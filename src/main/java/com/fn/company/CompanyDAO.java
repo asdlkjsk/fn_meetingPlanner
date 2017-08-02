@@ -7,15 +7,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class CompanyDAO {
-		@Inject
-		private SqlSession session;
-		private final static String NAMESPACE = "CompanyMapper.";
-		
-		
-		public int companyWrite(CompanyDTO companyDTO) throws Exception{			
-			
-			return 0;
-		}
-		
+	@Inject
+	private SqlSession sqlSession;
+	private final static String NAMESPACE = "CompanyMapper.";
 	
+	public int companyWrite(CompanyDTO companyDTO){			
+		return sqlSession.insert(NAMESPACE+"write", companyDTO);
+	}
+	
+	public CompanyDTO companyView(CompanyDTO companyDTO){
+		return sqlSession.selectOne(NAMESPACE+"view", companyDTO);
+	}
 }

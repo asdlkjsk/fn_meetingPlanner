@@ -53,5 +53,10 @@ public class ManagerServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+	@Override
+	public int idCheck(MemberDTO memberDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
