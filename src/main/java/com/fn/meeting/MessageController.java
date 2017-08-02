@@ -100,6 +100,10 @@ public class MessageController {
 		}
 		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		System.out.println("변경 전 mgcheck"+memberDTO.getMgCheck());
+		MessageDTO messageDTO = messageService.megListDel(memberDTO.getId(), chk.length);
+		System.out.println("변경된 mgcheck"+messageDTO.getMgCheck());
+		memberDTO.setMgCheck(messageDTO.getMgCheck());
 		System.out.println("getid : "+memberDTO.getId());
 		String message = "FAIL";
 		if(result>0){

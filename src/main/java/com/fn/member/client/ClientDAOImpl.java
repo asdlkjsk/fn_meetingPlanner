@@ -22,7 +22,10 @@ public class ClientDAOImpl implements MemberDAO{
 
 	public MemberDTO memberReload(MemberDTO memberDTO) throws Exception {
 		System.out.println("dao getId : "+memberDTO.getId());
-		int result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
+		int result = 0;
+		if(sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId())!=null){
+		result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
+		}
 		memberDTO.setMgCheck(result);
 		System.out.println("mgcheck dao : "+result);
 		return memberDTO;
@@ -32,7 +35,10 @@ public class ClientDAOImpl implements MemberDAO{
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
 		memberDTO = sqlSession.selectOne(namespace+"clientLogin", memberDTO);
 		System.out.println("clientLogin DAO : "+memberDTO.getId());
-		int result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
+		int result = 0;
+		if(sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId())!=null){
+			result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
+		}
 		memberDTO.setMgCheck(result);
 		/*System.out.println(result);*/
 		return memberDTO;

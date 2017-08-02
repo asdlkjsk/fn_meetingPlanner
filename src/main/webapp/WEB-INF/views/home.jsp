@@ -470,25 +470,6 @@ to {
 			location.href = "meeting/meetingCreate";
 		}
 		
-		function updateMgCheck() {
-			var id = '${member.id}';
-			var pw = '${member.pw}';
-		
-			$(".dropdown_box").mouseover(function() {
-				$.ajax({
-					type : 'post',
-					url : '<%=application.getContextPath() %>/member/clientReload',
-					data : {
-						id:id,
-						pw:pw
-					},
-					success:function(data){
-						data = data.trim();
-						$(".dropdown_box").html(data);
-					}
-				});
-			});
-		}
 	</script>
 </body>
 </html>

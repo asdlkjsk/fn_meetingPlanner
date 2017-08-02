@@ -86,26 +86,12 @@ public class ClientController {
 		
 	}
 	
-	@RequestMapping(value = "/clientReload", method={RequestMethod.POST, RequestMethod.GET})
-/*	public String reload(MemberDTO memberDTO, RedirectAttributes redirectAttributes, HttpSession session, String bpath) throws Exception {*/
-	public ModelAndView reload(MemberDTO memberDTO, ModelAndView mv , HttpSession session) throws Exception {
+	@RequestMapping(value = "/clientReload", method=RequestMethod.GET)
+	public String reload(MemberDTO memberDTO, HttpSession session, String bpath) throws Exception {
+	
 		memberDTO = clientServiceImpl.memberReload(memberDTO);
-		
-		
-		//**/meeting 전까지
+		System.out.println("id  나오지롱 "+memberDTO.getId());
 
-		/*String c = bpath.substring((session.getServletContext().getContextPath().length()+16));*/
-		
-		//이래도alert 무한루프
-		//String c = ".."+bpath.substring((session.getServletContext().getContextPath().length()+16));
-
-		//이러면 alert이 계속 나옴
-		//String c = bpath.substring((session.getServletContext().getContextPath().length()+8));
-		/*System.out.println(c);*/
-		String message="Move Success";
-		
-		/*String path = "./memberLogin";
-		String message="Login Fail";*/
 		System.out.println("mgcheck 수정 결과"+memberDTO.getMgCheck());
 		
 		System.out.println("reload컨트롤러 온거얌");
@@ -115,15 +101,9 @@ public class ClientController {
 			session.setAttribute("member", memberDTO);
 			
 		}
+
 		
-		/*mv.addObject("path", "/meeting/message/ReadList?curPage=&find=&search=&recvId="+memberDTO.getId());*/
-		mv.addObject("message", message);
-		mv.setViewName("commons/result");
-/*		redirectAttributes.addAttribute("path", c);
-		redirectAttributes.addAttribute("message", message);*/
-		
-		return mv;
-		/*return "redirect:/message/ReadList?curPage=&find=&search=&recvId="+memberDTO.getId();*/
+		return "commons/ajaxResult";
 		
 	}
 	

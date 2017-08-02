@@ -38,4 +38,11 @@ public class MessageService {
 		return messageDAO.megDelete(megNum);
 	}
 	
+	//listDel
+	public MessageDTO megListDel(String id, int decrenum) throws Exception{
+		
+		return messageDAO.megListDel(id, decrenum);
+	}
+	
+	
 }

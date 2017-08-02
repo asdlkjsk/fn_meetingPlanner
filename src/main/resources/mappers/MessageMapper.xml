@@ -66,4 +66,16 @@
 	<delete id="delete" parameterType="java.lang.Integer">
 		delete message where megnum=#{megNum}
 	</delete> 		
+	
+	<select id="listDel1" parameterType="MessageDTO" resultType="java.lang.Integer">
+		select count(rcheck) from message where recvid=#{recvId} and rcheck = 1	
+	</select>
+	
+	<update id="listDel2" parameterType="MessageDTO">
+		update message set mgcheck = mgcheck-#{decrenum} where recvid=#{recvId}
+	</update>
+	
+	<select id="listDel3" parameterType="MessageDTO" resultType="java.lang.Integer">
+		select DISTINCT mgcheck from message where recvid=#{recvId}
+	</select>
  </mapper> 
