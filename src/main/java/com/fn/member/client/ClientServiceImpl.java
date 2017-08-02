@@ -19,6 +19,10 @@ public class ClientServiceImpl implements MemberService{
 	private ClientDAOImpl clientDAOImpl;
 	private FileSaver filesaver;
 	
+	public MemberDTO memberReload(MemberDTO memberDTO) throws Exception {
+		return clientDAOImpl.memberReload(memberDTO);
+	}
+	
 	@Override
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
 		return clientDAOImpl.memberLogin(memberDTO);

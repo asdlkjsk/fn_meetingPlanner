@@ -130,6 +130,7 @@ span{
 					<div>
 					<c:if test="${board eq 'Read' }">
 						<input type="hidden" name="recvId" value="${meg.sendId }">
+						<input type="hidden" name="mgCheck" value="${meg.mgCheck }">
 						<input type="button" class="btn info" style="background-color: #44aaff;" id="btn1" value="답장">					
 					</c:if>
 						<input type="button" class="btn danger" id="btn2" value="삭제">

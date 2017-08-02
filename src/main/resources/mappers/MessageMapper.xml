@@ -38,11 +38,19 @@
  	
  	<insert id="write1" parameterType="MessageDTO">
  		insert into message
- 		values (meg_seq.nextval, #{sendId}, #{contents}, #{recvId}, #{mgCheck}, sysdate)
+ 		values (meg_seq.nextval, #{sendId}, #{contents}, #{recvId}, #{mgCheck}, sysdate, 1)
  	</insert>
 	
 	<update id="update" parameterType="MessageDTO">
 		update message set MGCHECK = MGCHECK+1 where recvId= #{sendId}
+	</update>
+	
+	<update id="mgUpdate" parameterType="MessageDTO">
+		update message set MGCHECK = MGCHECK-1 where recvId= #{sendId}
+	</update>
+	
+	<update id="mgUpdate2" parameterType="MessageDTO">
+		update message set rCHECK = 0 where megnum= #{megNum}
 	</update>
 	
 	 <select id="view2" resultType="MessageDTO">

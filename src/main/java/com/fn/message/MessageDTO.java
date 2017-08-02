@@ -7,8 +7,23 @@ public class MessageDTO{
 	private String sendId;
 	private String contents;
 	private String recvId;
-	private int mgCheck;	
+	private int mgCheck;
 	private Date sendDate;
+	//rcheck 추가(07.26)
+	private int rcheck;
+	
+	public int getRcheck() {
+		return rcheck;
+	}
+	public void setRcheck(int rcheck) {
+		this.rcheck = rcheck;
+	}
+	public int getMgCheck() {
+		return mgCheck;
+	}
+	public void setMgCheck(int mgCheck) {
+		this.mgCheck = mgCheck;
+	}
 	
 	public int getMegNum() {
 		return megNum;
@@ -41,12 +56,6 @@ public class MessageDTO{
 		this.sendDate = sendDate;
 	}
 		
-	public int getMgCheck() {
-		return mgCheck;
-	}
-	public void setMcheck(int mgcheck) {
-		this.mgCheck = mgcheck;
-	}
 	
 	
 }
