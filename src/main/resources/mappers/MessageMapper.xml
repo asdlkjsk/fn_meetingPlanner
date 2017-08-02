@@ -38,7 +38,7 @@
  	
  	<insert id="write1" parameterType="MessageDTO">
  		insert into message
- 		values (meg_seq.nextval, #{sendId}, #{contents}, #{recvId}, #{mgCheck}, sysdate)
+ 		values (meg_seq.nextval, #{sendId}, #{contents}, #{recvId}, #{mgCheck}, sysdate, 1)
  	</insert>
 	
 	<update id="update" parameterType="MessageDTO">
