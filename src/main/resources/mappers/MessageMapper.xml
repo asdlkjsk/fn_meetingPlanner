@@ -42,6 +42,10 @@
  	</insert>
 	
 	<update id="update" parameterType="MessageDTO">
+		update message set MGCHECK = MGCHECK+1 where recvId= #{recvId}
+	</update>
+	
+	<update id="update1" parameterType="MessageDTO">
 		update message set MGCHECK = MGCHECK+1 where recvId= #{sendId}
 	</update>
 	
@@ -56,6 +60,11 @@
 	 <select id="view2" resultType="MessageDTO">
  		select * from message 
 		where megnum = (select max(megnum) from message)
+ 	</select>
+ 	
+ 	 <select id="view3" parameterType="MessageDTO" resultType="java.lang.Integer">
+ 		select DISTINCT mgcheck from message 
+		where recvid = #{recvId}
  	</select>
 	
 	 <insert id="write2" parameterType="MessageDTO">

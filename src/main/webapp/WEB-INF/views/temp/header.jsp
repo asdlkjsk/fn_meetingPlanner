@@ -48,21 +48,16 @@
 					data : {
 						id:id
 					},
-/* 					success:function(data){
-						data = data.trim();
-						alert(data);
-					} */
 					success:function(data){
 						data = data.trim();
-						$(".dropdown_box").html(data);
-						
-					},
+						$(".dropdown_box").html(data);	
+					}/* ,
 					fail:function(data){
 						data = data.trim();
 						$(".dropdown_box").html(data);
 
 					} 
-					
+					 */
 				});
 		        }, function(){
 		        	$(".dropdown_box").css("display", "none");

@@ -28,8 +28,8 @@ public class MessageService {
 	
 	//write
 	public int megWrite(MessageDTO MessageDTO) throws Exception {
-		/*System.out.println("Service");*/
-				
+		System.out.println("Service");
+		System.out.println("서비스에서 mgcheck  "+MessageDTO.getMgCheck());
 		return messageDAO.megWrite(MessageDTO);
 	}
 	

@@ -88,7 +88,6 @@ span{
 							<td >받는사람 :
 								<input type="text" name="recvId" style="width: 450px;" value="${param.recvId }">
 								<input type="hidden" name="sendId" value="${member.id }">
-								
 							</td>
 						</tr>				
 						<tr>
@@ -97,7 +96,7 @@ span{
 					</tbody>
 				</table>
 				<div>
-					<input type="hidden" name="mgCheck" value="${param.mgCheck}">
+					<input type="hidden" name="mgCheck" value="${member.mgCheck}">
 					<input type="submit" class="btn info" value="보내기">
 				</div>
 			</form>

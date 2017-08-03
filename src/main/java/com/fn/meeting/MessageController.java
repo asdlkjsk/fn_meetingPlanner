@@ -28,6 +28,7 @@ public class MessageController {
 	@RequestMapping(value="/ReadList", method=RequestMethod.GET)
 	public String megList(Model model, ListInfo listInfo) throws Exception {
 		List<MessageDTO> list = messageService.megList(listInfo);
+		System.out.println("Listmgcheck 확인(컨트롤러) "+list.get(0).getMgCheck());
 		model.addAttribute("list", list);
 		model.addAttribute("listInfo", listInfo);
 		model.addAttribute("board", "Read");
@@ -58,13 +59,13 @@ public class MessageController {
 	//write
 	@RequestMapping(value="MegWrite", method=RequestMethod.POST)
 	public String megWrite(MessageDTO MessageDTO, RedirectAttributes redirectAttributes) throws Exception {
-/*		System.out.println("Controller");
+		System.out.println("Controller");
 		System.out.println("recvid : "+MessageDTO.getRecvId());
 		System.out.println("sendid : "+MessageDTO.getSendId());
 		System.out.println("megnum : "+MessageDTO.getMegNum());
 		System.out.println("contents : "+MessageDTO.getContents());
 		System.out.println("mgcheck : "+MessageDTO.getMgCheck());
-		System.out.println("senddate : "+MessageDTO.getSendDate());*/
+		System.out.println("senddate : "+MessageDTO.getSendDate());
 		int result = messageService.megWrite(MessageDTO);
 		String message = "FAIL";
 		if(result>0){
