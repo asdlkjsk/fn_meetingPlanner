@@ -19,13 +19,13 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		System.out.println(request.getMethod());
+/*		System.out.println(request.getMethod());
 		String bfurl = request.getHeader("referer");
 		System.out.println("이전주소 : " + bfurl);
 		StringBuffer nurl = request.getRequestURL();
 		System.out.println("현재주소 : " + nurl);
 		String nuri = request.getRequestURI();
-		System.out.println("현재 uri : " + nuri);
+		System.out.println("현재 uri : " + nuri);*/
 		
 
 		return super.preHandle(request, response, handler);

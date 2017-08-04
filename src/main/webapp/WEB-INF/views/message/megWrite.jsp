@@ -82,19 +82,33 @@ span{
 		<c:import url="/WEB-INF/views/temp/megLeft.jsp"></c:import>
 				<div id="msg_right" class="container">
 				<form action="MegWrite" method="post">
+			<div class="ajax_check">
 				<table class="table table-hover">
 					<tbody>
 						<tr>
 							<td >받는사람 :
 								<input type="text" name="recvId" style="width: 450px;" value="${param.recvId }">
 								<input type="hidden" name="sendId" value="${member.id }">
+								<input type="button" id="id_check" value="Check">
+								
 							</td>
-						</tr>				
+						</tr>	
+						<c:if test="${param.idCheck ne '' }">
+								<tr>
+							<td>보낼 수 있는 사용자입니다.</td>
+						</tr>
+								</c:if>
+								<c:if test="${param.idCheck eq '' }">
+								<tr>
+							<td>보낼 수 있는 사용자입니다.</td>
+						</tr>
+								</c:if>						
 						<tr>
 							<td><textarea rows="7" cols="10" name="contents" style="width: 500px;"></textarea> </td>
 						</tr>
 					</tbody>
 				</table>
+			</div>
 				<div>
 					<input type="hidden" name="mgCheck" value="${member.mgCheck}">
 					<input type="submit" class="btn info" value="보내기">
@@ -105,6 +119,27 @@ span{
 	</section>
 
 <c:import url="/WEB-INF/views/temp/footer.jsp"></c:import>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#id_check").click(function() {
+	var id = '${member.id}';
 
+    	$.ajax({
+			type : 'get',
+			url : '<%=application.getContextPath()%>/member/memCheck',
+				data : {
+					id : id
+				},
+				success : function(data) {
+					data = data.trim();
+					$(".ajax_check").html(data);
+				}
+			});
+		}/* , function() {
+			$(".dropdown_box").css("display", "none");
+		}); */
+
+	});
+</script>
 </body>
 </html>

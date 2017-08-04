@@ -28,7 +28,6 @@ public class MessageController {
 	@RequestMapping(value="/ReadList", method=RequestMethod.GET)
 	public String megList(Model model, ListInfo listInfo) throws Exception {
 		List<MessageDTO> list = messageService.megList(listInfo);
-		System.out.println("Listmgcheck 확인(컨트롤러) "+list.get(0).getMgCheck());
 		model.addAttribute("list", list);
 		model.addAttribute("listInfo", listInfo);
 		model.addAttribute("board", "Read");
@@ -49,8 +48,6 @@ public class MessageController {
 	//writeForm
 	@RequestMapping(value="MegWrite", method=RequestMethod.GET)
 	public String megWrite(Model model, MessageDTO messageDTO) throws Exception {
-		System.out.println(messageDTO.getMgCheck());
-		System.out.println(messageDTO.getRecvId());
 		model.addAttribute("path", "Read");
 		model.addAttribute("meg", messageDTO);
 		return "message/megWrite";
@@ -59,13 +56,6 @@ public class MessageController {
 	//write
 	@RequestMapping(value="MegWrite", method=RequestMethod.POST)
 	public String megWrite(MessageDTO MessageDTO, RedirectAttributes redirectAttributes) throws Exception {
-		System.out.println("Controller");
-		System.out.println("recvid : "+MessageDTO.getRecvId());
-		System.out.println("sendid : "+MessageDTO.getSendId());
-		System.out.println("megnum : "+MessageDTO.getMegNum());
-		System.out.println("contents : "+MessageDTO.getContents());
-		System.out.println("mgcheck : "+MessageDTO.getMgCheck());
-		System.out.println("senddate : "+MessageDTO.getSendDate());
 		int result = messageService.megWrite(MessageDTO);
 		String message = "FAIL";
 		if(result>0){
@@ -91,21 +81,39 @@ public class MessageController {
 	
 	//MegListDelete
 	@RequestMapping(value="ReadListDelete", method=RequestMethod.GET)
+	/*public String megListDelete(Integer[] chk, Integer[] chkr, RedirectAttributes redirectAttributes, HttpSession session) throws Exception {*/
 	public String megListDelete(Integer[] chk, RedirectAttributes redirectAttributes, HttpSession session) throws Exception {
-		System.out.println("control");
-		/*System.out.println(board);*/
 		int result = 0;
+		int count = 0;
+		
+/*		for(int i=0;i<chkr.length;i++){
+			if(chkr[i] == 1){
+				System.out.println("if문 rcheck확인 : "+chkr[i]);
+				count++;
+			}
+		}*/
+		
+		
+		System.out.println("컨트롤러");
+		System.out.println("컨트롤러에서 count : "+count);
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
 		for(int i =0;i<chk.length;i++){
-			/*System.out.println(chk[i]);*/
+			System.out.println("for문 megNum확인 : "+chk[i]);
+			count = count + messageService.megRcheck(chk[i]);
+		}
+		
+		for(int i =0;i<chk.length;i++){
+			System.out.println("for문 megNum확인 : "+chk[i]);
 			result = messageService.megDelete(chk[i]);
 		}
 		
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		System.out.println("변경 전 mgcheck"+memberDTO.getMgCheck());
-		MessageDTO messageDTO = messageService.megListDel(memberDTO.getId(), chk.length);
-		System.out.println("변경된 mgcheck"+messageDTO.getMgCheck());
+		System.out.println("count 확인 : "+count);
+		MessageDTO messageDTO = messageService.megListDel(memberDTO.getId(), count);
+				
+		System.out.println("컨트롤러에서 서비스 처리후  mgcheck : "+messageDTO.getMgCheck());
 		memberDTO.setMgCheck(messageDTO.getMgCheck());
-		System.out.println("getid : "+memberDTO.getId());
+		
 		String message = "FAIL";
 		if(result>0){
 			message = "SUCCESS";			
