@@ -42,11 +42,15 @@
  	</insert>
 	
 	<update id="update" parameterType="MessageDTO">
+		update message set MGCHECK = MGCHECK+1 where recvId= #{recvId}
+	</update>
+	
+	<update id="update1" parameterType="MessageDTO">
 		update message set MGCHECK = MGCHECK+1 where recvId= #{sendId}
 	</update>
 	
 	<update id="mgUpdate" parameterType="MessageDTO">
-		update message set MGCHECK = MGCHECK-1 where recvId= #{sendId}
+		update message set MGCHECK = MGCHECK-1 where recvId= #{recvId}
 	</update>
 	
 	<update id="mgUpdate2" parameterType="MessageDTO">
@@ -57,6 +61,16 @@
  		select * from message 
 		where megnum = (select max(megnum) from message)
  	</select>
+ 	
+ 	 <select id="view3" parameterType="MessageDTO" resultType="java.lang.Integer">
+ 		select DISTINCT mgcheck from message 
+		where recvid = #{recvId}
+ 	</select>
+ 	
+ 	 <select id="view4" parameterType="MessageDTO" resultType="java.lang.Integer">
+ 		select DISTINCT mgcheck from message 
+		where recvid = #{recvId}
+ 	</select>
 	
 	 <insert id="write2" parameterType="MessageDTO">
  		insert into sendmessage
@@ -66,4 +80,20 @@
 	<delete id="delete" parameterType="java.lang.Integer">
 		delete message where megnum=#{megNum}
 	</delete> 		
+	
+	<select id="listDel1" parameterType="MessageDTO" resultType="java.lang.Integer">
+		select rcheck from message where megNum=#{megNum}	
+	</select>
+	
+	<select id="listDel2" parameterType="MessageDTO" resultType="java.lang.Integer">
+		select count(rcheck) from message where recvid=#{recvId} and rcheck = 1	
+	</select>
+	
+	<update id="listDel3" parameterType="MessageDTO">
+		update message set mgcheck = mgcheck-#{decrenum} where recvid=#{recvId}
+	</update>
+	
+	<select id="listDel4" parameterType="MessageDTO" resultType="java.lang.Integer">
+		select DISTINCT mgcheck from message where recvid=#{recvId}
+	</select>
  </mapper> 

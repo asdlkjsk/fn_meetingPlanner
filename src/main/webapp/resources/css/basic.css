@@ -102,9 +102,9 @@ header {
 		display: block;
 		text-align: left;
 }
-.login_dropdown:hover .dropdown_box {
+/* .login_dropdown:hover .dropdown_box {
     display: block;
-}
+} */
 
 
 .dropdown_box a:hover {

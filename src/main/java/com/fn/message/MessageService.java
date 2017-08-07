@@ -28,8 +28,6 @@ public class MessageService {
 	
 	//write
 	public int megWrite(MessageDTO MessageDTO) throws Exception {
-		/*System.out.println("Service");*/
-				
 		return messageDAO.megWrite(MessageDTO);
 	}
 	
@@ -38,4 +36,14 @@ public class MessageService {
 		return messageDAO.megDelete(megNum);
 	}
 	
+	//listDel
+	public MessageDTO megListDel(String id, int decrenum) throws Exception{
+		
+		return messageDAO.megListDel(id, decrenum);
+	}
+	
+	//rcheck
+	public int megRcheck(int megNum) throws Exception {
+		return messageDAO.megRcheck(megNum);
+	}
 }

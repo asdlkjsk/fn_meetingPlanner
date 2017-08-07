@@ -20,15 +20,38 @@ public class ClientDAOImpl implements MemberDAO{
 	private final String namespace="ClientMapper.";
 	private final String namespace2="MemberMapper.";
 
+<<<<<<< HEAD
 	public MemberDTO kakaoLogin(MemberDTO memberDTO) throws Exception {		
 		memberDTO = sqlSession.selectOne(namespace+"kakaoLogin", memberDTO);				
+=======
+	public MemberDTO memberReload(MemberDTO memberDTO) throws Exception {
+		System.out.println("dao getId : "+memberDTO.getId());
+		int result = 0;
+		if(sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId())!=null){
+		result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
+		}
+		memberDTO.setMgCheck(result);
+		System.out.println("mgcheck dao : "+result);
+>>>>>>> 0802_pjw
 		return memberDTO;
 	}
 	
 	@Override
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
+<<<<<<< HEAD
 		return sqlSession.selectOne(namespace+"clientLogin", memberDTO);
 		
+=======
+		memberDTO = sqlSession.selectOne(namespace+"clientLogin", memberDTO);
+		System.out.println("clientLogin DAO : "+memberDTO.getId());
+		int result = 0;
+		if(sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId())!=null){
+			result = sqlSession.selectOne(namespace2+"mgCheck", memberDTO.getId());
+		}
+		memberDTO.setMgCheck(result);
+		/*System.out.println(result);*/
+		return memberDTO;
+>>>>>>> 0802_pjw
 	}
 
 	@Override

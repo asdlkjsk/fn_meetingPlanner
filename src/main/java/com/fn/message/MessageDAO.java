@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fn.member.MemberDTO;
 import com.fn.util.ListInfo;
 
 @Repository
@@ -16,41 +17,37 @@ public class MessageDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String namespace = "MessageMapper.";
-	
-	//insert
+
+	// insert
 	public int megWrite(MessageDTO MessageDTO) throws Exception {
-/*		System.out.println("DAO");
 		
-		int result1 = sqlSession.insert(namespace+"write1", MessageDTO);
-		System.out.println("result1 : "+result1);
-		int result2 = sqlSession.update(namespace+"update", MessageDTO);
-		System.out.println("result2 : "+result2);
-		MessageDTO = sqlSession.selectOne(namespace+"view2");*/
-/*		System.out.println("recvid : "+MessageDTO.getRecvId());
-		System.out.println("sendid : "+MessageDTO.getSendId());
-		System.out.println("megnum : "+MessageDTO.getMegNum());
-		System.out.println("contents : "+MessageDTO.getContents());
-		System.out.println("mgcheck : "+MessageDTO.getMgCheck());
-		System.out.println("senddate : "+MessageDTO.getSendDate());*/
+		int acheck = MessageDTO.getMgCheck();
 		
-		sqlSession.insert(namespace+"write1", MessageDTO);
-		MessageDTO = sqlSession.selectOne(namespace+"view2");
-/*		System.out.println("recvid : "+MessageDTO.getRecvId());
-		System.out.println("sendid : "+MessageDTO.getSendId());
-		System.out.println("megnum : "+MessageDTO.getMegNum());
-		System.out.println("contents : "+MessageDTO.getContents());
-		System.out.println("mgcheck : "+MessageDTO.getMgCheck());
-		System.out.println("senddate : "+MessageDTO.getSendDate());*/
-		sqlSession.update(namespace+"update", MessageDTO);
-		return sqlSession.insert(namespace+"write2", MessageDTO);
+		if(MessageDTO.getRecvId().equals(MessageDTO.getSendId())){
+			sqlSession.update(namespace + "update1", MessageDTO);
+			acheck = sqlSession.selectOne(namespace + "view3",MessageDTO);
+			MessageDTO.setMgCheck(acheck);
+		}else{
+			acheck = sqlSession.selectOne(namespace + "view3",MessageDTO);
+			sqlSession.update(namespace + "update", MessageDTO);
+			acheck = sqlSession.selectOne(namespace + "view3",MessageDTO);
+			MessageDTO.setMgCheck(acheck);
+		}
+		
+		
+		sqlSession.insert(namespace + "write1", MessageDTO);
+		
+		MessageDTO = sqlSession.selectOne(namespace + "view2");
+		
+		return sqlSession.insert(namespace + "write2", MessageDTO);
 	}
-	
-	//delete
+
+	// delete
 	public int megDelete(int megNum) throws Exception {
-		return sqlSession.delete(namespace+"delete", megNum);
+		return sqlSession.delete(namespace + "delete", megNum);
 	}
-		
-	//view
+
+	// view
 	public MessageDTO megView(int megNum) throws Exception {
 		MessageDTO messageDTO = sqlSession.selectOne(namespace + "view", megNum);
 		if (messageDTO.getRcheck() == 1) {
@@ -59,17 +56,51 @@ public class MessageDAO {
 		}
 		return messageDTO;
 	}
-	
-	//list
+
+	// list
 	public List<MessageDTO> megList(ListInfo listInfo) throws Exception {
-		List<MessageDTO> ar = sqlSession.selectList(namespace+"list", listInfo);
-		/*System.out.println(ar.get(0).getRcheck());*/
+		List<MessageDTO> ar = sqlSession.selectList(namespace + "list", listInfo);
 		return ar;
 	}
-	
-	//getCount
+
+	// getCount
 	public int megCount(ListInfo listInfo) throws Exception {
-		return sqlSession.selectOne(namespace+"count", listInfo);
+		return sqlSession.selectOne(namespace + "count", listInfo);
+	}
+
+	// listDel
+	public MessageDTO megListDel(String id, int decrenum) throws Exception {
+		
+		
+		MessageDTO messageDTO = new MessageDTO();
+		messageDTO.setRecvId(id);
+		messageDTO.setDecrenum(decrenum);
+		
+		
+
+		sqlSession.update(namespace + "listDel3", messageDTO);
+
+		int mgcheck = 0;
+		if (sqlSession.selectOne(namespace + "listDel4", messageDTO) != null) {
+			mgcheck = sqlSession.selectOne(namespace + "listDel4", messageDTO);
+		}
+		System.out.println("DAO mgCheck : " + mgcheck);
+		messageDTO.setMgCheck(mgcheck);
+		return messageDTO;
 	}
 	
+	//rcheck
+	public int megRcheck(int megNum) throws Exception {
+		int result = 0;
+		int count = 0;
+		
+		result = sqlSession.selectOne(namespace + "listDel1", megNum);
+		if(result == 1){
+			count++;
+		}
+
+		return count;
+	}
+	
+
 }

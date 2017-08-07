@@ -11,7 +11,16 @@ public class MessageDTO{
 	private Date sendDate;
 	//rcheck 추가(07.26)
 	private int rcheck;
+	//decrenum 추가(08.02)
+	private int decrenum;
 	
+	
+	public int getDecrenum() {
+		return decrenum;
+	}
+	public void setDecrenum(int decrenum) {
+		this.decrenum = decrenum;
+	}
 	public int getRcheck() {
 		return rcheck;
 	}

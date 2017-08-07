@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- <link href="<%=application.getContextPath()%>/resources/js/jquery-3.2.1.min.js" rel="MIME"> --%>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <header>
 		<div class="header_wrap">
 			<div class="img_div">
@@ -36,3 +39,31 @@
 			</div>
 		</div>
 	</header>
+	<script type="text/javascript">
+			$(document).ready(function(){
+			var id = '${member.id}';
+			
+		    $(".login_dropdown").hover(function(){
+		    	$(".dropdown_box").css("display", "block");
+		    	$.ajax({
+					type : 'get',
+					url : '<%=application.getContextPath()%>/member/clientReload',
+					data : {
+						id:id
+					},
+					success:function(data){
+						data = data.trim();
+						$(".dropdown_box").html(data);	
+					}/* ,
+					fail:function(data){
+						data = data.trim();
+						$(".dropdown_box").html(data);
+
+					} 
+					 */
+				});
+		        }, function(){
+		        	$(".dropdown_box").css("display", "none");
+		    });
+		});
+	</script>

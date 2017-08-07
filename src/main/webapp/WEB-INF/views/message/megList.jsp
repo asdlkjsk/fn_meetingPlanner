@@ -241,7 +241,8 @@ form {
 										<tr>
 											<td class="list_td" style="border-top: none; color: blue;"><input
 												type="checkbox" id="tn${i.index+1 }" name="chk" class="chk"
-												value="${m.megNum}"></td>
+												value="${m.megNum}">
+												</td>
 											<td class="list_td" style="border-top: none; color: blue;">${m.sendId}
 											</td>
 											<td class="list_td"
@@ -255,7 +256,8 @@ form {
 											<td class="list_td"
 												style="border-top: none; font-style: italic;">
 												<input type="checkbox" id="tn${i.index+1 }" name="chk" class="chk"
-												value="${m.megNum}"></td>
+												value="${m.megNum}">
+												</td>
 											<td class="list_td"
 												style="border-top: none; font-style: italic;">${m.sendId}
 											</td>
@@ -275,7 +277,8 @@ form {
 										<tr>
 											<td class="list_td" style="border-top: none; color: blue;"><input
 												type="checkbox" id="tn${i.index+1 }" name="chk" class="chk"
-												value="${m.megNum}"></td>
+												value="${m.megNum}">
+												</td>
 											<td class="list_td" style="border-top: none; color: blue;">${m.recvId}</td>
 											<td class="list_td"
 												style="border-top: none; display: inline-block; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal; width: 400px; overflow: hidden;"><a
@@ -289,7 +292,8 @@ form {
 										<tr>
 											<td class="list_td" style="border-top: none;"><input
 												type="checkbox" id="tn${i.index+1 }" name="chk" class="chk"
-												value="${m.megNum}"></td>
+												value="${m.megNum}">
+												</td>
 											<td class="list_td" style="border-top: none;">${m.recvId}</td>
 											<td class="list_td"
 												style="border-top: none; color: black; display: inline-block; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal; width: 400px; overflow: hidden;">

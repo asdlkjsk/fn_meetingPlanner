@@ -12,7 +12,7 @@ public class LogingCheckInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		try {
 			if (request.getSession().getAttribute("member") == null) {
-				response.sendRedirect("/meeting");
+				response.sendRedirect("/meeting/");
 				return false;
 			}
 		} catch (Exception e) {
