@@ -109,7 +109,7 @@ public class ClientController {
 		
 	}
 	
-<<<<<<< HEAD
+
 	@RequestMapping(value = "/kakaoLogin", method={RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView kakaoLogin(MemberDTO memberDTO, ModelAndView mv, HttpSession session, String nick, String img, String id) throws Exception {
 		memberDTO = clientServiceImpl.kakaoLogin(memberDTO);
@@ -121,7 +121,15 @@ public class ClientController {
 		System.out.println("컨트롤러 nick : "+nick);
 		System.out.println("컨트롤러 img : "+img);
 		System.out.println("컨트롤러 아이디 : "+id);
-=======
+		
+		System.out.println(para);
+		mv.addObject("path", path);
+		mv.addObject("message", message);
+		mv.setViewName("commons/result");
+		
+		return mv;
+}
+
 	@RequestMapping(value = "/clientReload", method=RequestMethod.GET)
 	public String reload(MemberDTO memberDTO, HttpSession session, String bpath) throws Exception {
 	
@@ -129,35 +137,17 @@ public class ClientController {
 		System.out.println("id  나오지롱 "+memberDTO.getId());
 
 		System.out.println("mgcheck 수정 결과"+memberDTO.getMgCheck());
->>>>>>> 0802_pjw
 		
+		System.out.println("reload컨트롤러 온거얌");
 		
 		if(memberDTO != null) {
-			message = "Login Success";
-			path = "../";
-			mv.addObject("path", path);
+
 			session.setAttribute("member", memberDTO);
-			System.out.println(memberDTO.getId());
-		}else {
-			path = "./memberAgree";
-			/*mv.addObject("path", path);
-			mv.addObject("nick", nick);
-			mv.addObject("img", img);
-			mv.addObject("id", id);*/
-			session.setAttribute("para", para);
+			
 		}
-<<<<<<< HEAD
-		System.out.println(para);
-		mv.addObject("path", path);
-		mv.addObject("message", message);
-		mv.setViewName("commons/result");
-		
-		return mv;
-=======
 
 		
 		return "commons/ajaxResult";
->>>>>>> 0802_pjw
 		
 	}
 	

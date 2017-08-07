@@ -19,6 +19,10 @@ public class ClientServiceImpl implements MemberService{
 	private ClientDAOImpl clientDAOImpl;
 	private FileSaver filesaver;
 	
+	public MemberDTO memberReload(MemberDTO memberDTO) throws Exception {
+		return clientDAOImpl.memberReload(memberDTO);
+	}
+	
 	public MemberDTO kakaoLogin(MemberDTO memberDTO) throws Exception {
 		
 		memberDTO = clientDAOImpl.kakaoLogin(memberDTO);

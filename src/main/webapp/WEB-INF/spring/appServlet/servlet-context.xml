@@ -36,8 +36,12 @@
 			<mapping path="/message/*" />
 			<mapping path="/meetingList/*" />
 			<exclude-mapping path="/member/memberLogin" />
+			<exclude-mapping path="/member/memberAgree" />
 			<exclude-mapping path="/member/clientLogin" />
 			<exclude-mapping path="/member/managerLogin" />
+			<exclude-mapping path="/member/memberJoin" />
+			<exclude-mapping path="/member/managerJoin" />
+			<exclude-mapping path="/member/clientJoin" />
 			<beans:ref bean="logingCheckInterceptor" />
 		</interceptor>
 		<!-- mgCheck를 실시간 갱신하려고 하지만 못하는중 퉷 -->
